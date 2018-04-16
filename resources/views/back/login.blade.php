@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>后台管理登录界面</title>
     <link href="{{asset('css/alogin.css')}}" rel="stylesheet" type="text/css" />
+    <script src="{{asset('jquery-1.8.3.js')}}"></script>
 </head>
 <body>
     <form id="form1" runat="server" action="{{url('backlogin/login')}}" method="get">
@@ -19,8 +20,8 @@
                     <li>
                         <span class="left login-text">用户名：</span> 
                         <span style="left">
-                            <input id="Text1" type="text" class="txt" name="username"/>  
-                        </span>
+                            <input id="Text1" type="text" class="txt" name="username"/> 
+                        </span> <span class="m_user"></span>
                     </li>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <li>
@@ -48,3 +49,15 @@
     </form>
 </body>
 </html>
+<script>
+$(function(){
+    $("[name='username']").blur(function(){
+        var username=$(this).val();
+        if(username){
+            $(".m_user").html("<font color='green'>√</font>")
+        }else{
+            $(".m_user").html("<font color='red'>×</font>")
+        }
+    });
+})
+</script>

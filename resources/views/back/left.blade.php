@@ -42,10 +42,10 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       </div>
       <div>
         <span>栏目管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">会员管理</a>
+        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">课堂管理</a>
+        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">故事管理</a>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">活动管理</a>
       </div>
       <div>
         <span>广告管理</span>
