@@ -16,3 +16,4 @@ Route::get('/', function () {
 Route::controller('/backlogin','Back\BackLoginController');
 Route::controller('/backindex','Back\BackIndexController');
 Route::controller('/backnet','Back\BackNetController');
+Route::post('/backnet/add','Back\BackNetController@add');
