@@ -27,8 +27,8 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
     <div style="float: left" id="my_menu" class="sdmenu">
       <div class="collapsed">
         <span>网站管理</span>
-        <a href="{{url('backnet')}}" target="mainFrame" onFocus="this.blur()">后台首页</a>
-        <a href="{{url('backnet/list')}}" target="mainFrame" onFocus="this.blur()">列表页</a>
+        <a href="{{url('backnet/netadd')}}" target="mainFrame" onFocus="this.blur()">网站添加</a>
+		<a href="{{url('backnet/list')}}" target="mainFrame" onFocus="this.blur()">列表页</a>
         <a href="{{url('backnet/info')}}" target="mainFrame" onFocus="this.blur()">列表详细页</a>
         <a href="{{url('backnet/message')}}" target="mainFrame" onFocus="this.blur()">留言页</a>
         <a href="{{url('backnet/menu')}}" target="mainFrame" onFocus="this.blur()">栏目管理</a>
