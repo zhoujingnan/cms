@@ -26,34 +26,48 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">
       <div class="collapsed">
-        <span>系统设置</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">后台首页</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">列表页</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">列表详细页</a>
-        <a href="main_message.html" target="mainFrame" onFocus="this.blur()">留言页</a>
-        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">栏目管理</a>
+        <span>网站管理</span>
+        <a href="{{url('backnet')}}" target="mainFrame" onFocus="this.blur()">后台首页</a>
+        <a href="{{url('backnet/list')}}" target="mainFrame" onFocus="this.blur()">列表页</a>
+        <a href="{{url('backnet/info')}}" target="mainFrame" onFocus="this.blur()">列表详细页</a>
+        <a href="{{url('backnet/message')}}" target="mainFrame" onFocus="this.blur()">留言页</a>
+        <a href="{{url('backnet/menu')}}" target="mainFrame" onFocus="this.blur()">栏目管理</a>
       </div>
       <div>
-        <span>系统设置</span>
+        <span>管理员管理</span>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
         <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
         <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
       </div>
       <div>
-        <span>系统设置</span>
+        <span>栏目管理</span>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
         <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
         <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
       </div>
       <div>
-        <span>系统设置</span>
+        <span>广告管理</span>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
         <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
         <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
       </div>
+      <div>
+        <span>留言管理</span>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
+        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
+        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+      </div>
+      <div>
+        <span>友情链接</span>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
+        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
+        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
+        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+      </div>     
     </div>
 </body>
 </html>

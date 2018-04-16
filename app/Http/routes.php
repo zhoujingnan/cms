@@ -13,4 +13,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::controller('/backindex', 'Back\BackIndexController');
+Route::controller('/backlogin','Back\BackLoginController');
+Route::controller('/backindex','Back\BackIndexController');
+Route::controller('/backnet','Back\BackNetController');
