@@ -5,6 +5,7 @@
 <link href="{{asset('css/css.css')}}" type="text/css" rel="stylesheet" />
 <link href="{{asset('css/main.css')}}" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="{{asset('images/main/favicon.ico')}}" />
+<script src="{{asset('jquery-1.8.3.js')}}"></script>
 <style>
 body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 #main{ font-size:12px;}
@@ -35,23 +36,16 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
     <td align="left" valign="top" width="50%">
     <div class="main-tit">网站信息</div>
     <div class="main-con">
-    会员注册：开启<br/>
-会员投稿：开启<br/>
-管理员个数：<font color="#538ec6"><strong>6</strong></font> 人<br/>
-登陆者IP：192.168.1.156<br/>
-程序编码：UTF-8<br/>
+		网站名称：{{$arr['net_name']}}<br/>
+		网站关键字：{{$arr['net_keys']}}<br/>
+		网站URL：{{$arr['net_url']}}<br />
+		网站logo：<img src="{{asset($arr['logo'])}}" width="100" /><br/>
+		网站坐标：x:{{$arr['x_coord']}},y:{{$arr['y_coord']}}<br/>
+		网站描述：{{$arr['net_desc']}}<br/>
+		<button id="update">编辑</button>
     </div>
     </td>
-    <td align="left" valign="top" width="49%">
-    <div class="main-tit">服务器信息</div>
-    <div class="main-con">
-服务器软件：Apache/2.2.6 (Win32) PHP/5.2.5<br/>
-PHP版本：5.2.5<br/>
-MYSQL版本：5.0.45-community-nt<br/>
-魔术引用：开启 (建议开启)<br/>
-使用域名：192.168.1.124 <br/>
-    </div>
-    </td>
+    
   </tr>
   <tr>
     <td colspan="2" align="left" valign="top">
@@ -61,5 +55,12 @@ MYSQL版本：5.0.45-community-nt<br/>
     </td>
   </tr>
 </table>
+<script>
+	$(function(){
+		$(document).on('click','#update',function(){
+			location.href="<?php echo url('backnet/netadd');?>";
+		})
+	})
+</script>
 </body>
 </html>

@@ -25,14 +25,7 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
     <span>用户：admin<br>角色：超级管理员</span>
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">
-      <div class="collapsed">
-        <span>网站管理</span>
-        <a href="{{url('backnet/netadd')}}" target="mainFrame" onFocus="this.blur()">网站添加</a>
-		<a href="{{url('backnet/list')}}" target="mainFrame" onFocus="this.blur()">列表页</a>
-        <a href="{{url('backnet/info')}}" target="mainFrame" onFocus="this.blur()">列表详细页</a>
-        <a href="{{url('backnet/message')}}" target="mainFrame" onFocus="this.blur()">留言页</a>
-        <a href="{{url('backnet/menu')}}" target="mainFrame" onFocus="this.blur()">栏目管理</a>
-      </div>
+      
       <div>
         <span>管理员管理</span>
         <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
@@ -50,10 +43,8 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       </div>
       <div>
         <span>广告管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+        <a href="{{asset('backadvertising/add')}}" target="mainFrame" onFocus="this.blur()">添加广告</a>
+        <a href="{{asset('backadvertising/ad_list')}}" target="mainFrame" onFocus="this.blur()">广告列表</a>
       </div>
       <div>
         <span>留言管理</span>

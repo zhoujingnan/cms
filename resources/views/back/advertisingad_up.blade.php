@@ -5,6 +5,7 @@
 <link href="{{asset('css/css.css')}}" type="text/css" rel="stylesheet" />
 <link href="{{asset('css/main.css')}}" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="{{asset('images/main/favicon.ico')}}" />
+<script src="{{asset('jquery-1.8.3.js')}}"></script>
 <style>
 body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 #searchmain{ font-size:12px;}
@@ -38,63 +39,83 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：网站管理&nbsp;&nbsp;>&nbsp;&nbsp;添加网站信息</td>
+    <td width="99%" align="left" valign="top">您的位置：广告管理&nbsp;&nbsp;>&nbsp;&nbsp;修改广告信息</td>
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form method="post" action="{{url('backnet/netdo')}}" enctype="multipart/form-data">
+    <form method="post" id="sub" action="{{url('backadvertising/up_do')}}" enctype="multipart/form-data">
 	
 	<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 	
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站标题：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">广告名称：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-			<input type="text" name="name" value="{{$arr['net_name']}}" class="text-word">
+			<input type="text" name="ad_name" value="{{$arr['ad_name']}}" class="text-word">
         </td>
     </tr>
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站关键字：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">广告类型：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="keys" value="{{$arr['net_keys']}}" class="text-word">
+			<select name="ad_type" id="ad_type">
+				<option value="0" >&nbsp;&nbsp;请选择类型</option>
+				<option value="1" @if($arr['ad_type']==1)selected = "selected"@endif>&nbsp;&nbsp;文本</option>
+				<option value="2" @if($arr['ad_type']==2)selected = "selected"@endif>&nbsp;&nbsp;图片</option>
+			</select>
+			<span id="bc"></span>
+        </td>
+    </tr>
+	@if($arr['ad_type']==1)
+	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'" id="type">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">广告内容：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="ad_content" id="ad_content" value="{{$arr['ad_content']}}" class="text-word">
+        </td>
+    </tr>
+	@else
+	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'" id="type">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">广告内容：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="file" name="ad_content" value="" class="text-word">
+		<img src="{{asset($arr['ad_content'])}}" id="img" width="100" />
+        </td>
+    </tr>
+	@endif
+	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">链接地址：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="ad_link" value="{{$arr['ad_link']}}" class="text-word">
         </td>
     </tr>
 	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站logo：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">开始时间：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="file" name="logo"  class="text-word">
-		<img src="{{asset($arr['logo'])}}" width="100" height="100">
-		<input type="hidden" name="img" value="{{$arr['logo']}}">
+        <input type="date" name="start_time" value="{{date("Y-m-d",$arr['start_time'])}}" class="text-word" id="start_time">
+        </td>
+    </tr>
+	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">结束时间：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="date" name="end_time" value="{{date("Y-m-d",$arr['end_time'])}}" class="text-word" id="end_time">
+		<span id="t_bc"></span>
         </td>
     </tr>
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站URL：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">广告描述：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="url" value="{{$arr['net_url']}}" class="text-word">
-        </td>
-    </tr>
-	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">x-coord：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="x_coord" value="{{$arr['x_coord']}}" class="text-word">
-        </td>
-    </tr>
-	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">y-coord：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="y_coord" value="{{$arr['y_coord']}}" class="text-word">
-        </td>
-    </tr>
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站描述：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-		<textarea name="desc">{{$arr['net_desc']}}</textarea>
+		<textarea name="ad_desc">{{$arr['ad_desc']}}</textarea>
         </td>
     </tr>
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input name="" type="submit" value="提交" class="text-but">
+		@if($arr['ad_type']==2)
+		<input type="hidden" name="ad_img" id="ad_img" value="{{$arr['ad_content']}}" />
+		@else
+		<input type="hidden" name="ad_text" id="ad_text" value="{{$arr['ad_content']}}" />
+		@endif
+		<input type="hidden" name="ad_id" value="{{$arr['ad_id']}}" />
+        <input name="" type="submit" value="修改" class="text-but">
         <input name="" type="reset" value="重置" class="text-but"></td>
     </tr>
     </table>
@@ -102,5 +123,61 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     </td>
     </tr>
 </table>
+<script>
+	$(function(){
+		
+		$(document).on('change','#ad_type',function(){
+			var t = $(this).val();
+			var img = $("#ad_img").val();
+			var text = $("#ad_text").val();
+			var str = "";
+			if(t=="1"){
+				str += '<td align="right" valign="middle" class="borderright borderbottom bggray">广告内容：</td>';
+				str += '<td align="left" valign="middle" class="borderright borderbottom main-for">';
+				str += '<input type="text" name="ad_content" id="ad_content" value="" class="text-word">';
+				str += '</td>';
+				$("#type").empty();
+				$("#type").append(str);
+				if(typeof(text)!="undefined"){
+					$("#ad_content").val(text);
+				}
+			}else if(t=="2"){
+				str += '<td align="right" valign="middle" class="borderright borderbottom bggray">广告内容：</td>';
+				str += '<td align="left" valign="middle" class="borderright borderbottom main-for">';
+				str += '<input type="file" name="ad_content" id="ad_content" value="" class="text-word">';
+				if(typeof(img)!="undefined"){
+					str += '<img src="/dayi/cms/public/'+img+'" width="100" id="img"/>';
+				}
+				str += '</td>';
+				$("#type").empty();
+				$("#type").append(str);
+			}
+		})
+		$(document).on('submit','#sub',function(){
+			var t = $("#ad_content").val();
+			var type = parseInt($("#ad_type").val());
+			var img = $("#ad_img").val();
+			var text = $("#ad_text").val();
+			var flog = 0;
+			//alert(type)
+			if(type==1 && t=="" && typeof(text)=="undefined"){
+				flog=0
+			}else if(type==2 && t=="" && typeof(img)=="undefined"){
+				flog=0
+			}else if(type==0){
+				flog=0
+			}else{
+				flog=1
+			}
+			//alert(flog)
+			if(flog==1){
+				return true
+			}else{
+				return false
+			}
+			
+		})
+	})
+</script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 	<frameset id="attachucp" framespacing="0" border="0" frameborder="no" cols="194,12,*" rows="*">
 		<frame scrolling="auto" noresize="" frameborder="no" name="leftFrame" src="backindex/left"></frame>
 		<frame id="leftbar" scrolling="no" noresize="" name="switchFrame" src="backindex/swich"></frame>
-		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="backindex/main"></frame>
+		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="backnet/index"></frame>
 	</frameset>
 <!--bottom样式-->
 	<frame src="backindex/bottom" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />
