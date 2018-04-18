@@ -7,7 +7,7 @@ class BackMemberController extends Controller{
 	public function index(){
 		$obj=new MemberModel();
 		//总条数
-		$count=$obj->count("member");
+		$count=$obj->count("member","1=1");
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -30,7 +30,7 @@ class BackMemberController extends Controller{
 		}
 		$obj=new MemberModel();
 		//总条数
-		$count=$obj->count("member");
+		$count=$obj->count("member",$where);
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -105,6 +105,8 @@ class BackMemberController extends Controller{
 		if($res){
 			echo "会员修改成功";
 			return redirect('backmember/index');			
+		}else{
+			return redirect("backmember/index");
 		}
 	}
 	//删除
@@ -118,6 +120,16 @@ class BackMemberController extends Controller{
 			echo "删除成功";
 			return redirect('backmember/index');
 		}
+	}
+	//批删
+	public function pidel(){
+		$str=$_GET['str'];
+		$obj=new MemberModel();
+		$res=$obj->pidel('member',"`member_id` in ($str)");
+		if($res){
+			echo 1;die;
+		}
+
 	}
 
 }

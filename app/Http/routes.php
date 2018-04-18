@@ -50,6 +50,7 @@ Route::get('/backmember/up/{member_id}','Back\BackMemberController@up');
 Route::post('/backmember/updo','Back\BackMemberController@updo');
 Route::get('/backmember/del/{member_id}','Back\BackMemberController@del');
 Route::get('/backmember/pagedata','Back\BackMemberController@pagedata');
+Route::get('/backmember/pidel','Back\BackMemberController@pidel');
 //课堂
 Route::get('/backclass/index','Back\BackClassController@index');
 Route::get('/backclass/uniqueTitle','Back\BackClassController@uniqueTitle');
@@ -59,6 +60,7 @@ Route::post('/backclass/adddo','Back\BackClassController@adddo');
 Route::get('/backclass/up/{class_id}','Back\BackClassController@up');
 Route::post('/backclass/updo','Back\BackClassController@updo');
 Route::get('/backclass/del/{member_id}','Back\BackClassController@del');
+Route::get('/backclass/pidel','Back\BackClassController@pidel');
 //故事管理
 Route::get('/backstory/index','Back\BackStoryController@index');
 Route::get('/backstory/add','Back\BackStoryController@add');
@@ -68,7 +70,22 @@ Route::get('/backstory/pagedata','Back\BackStoryController@pagedata');
 Route::get('/backstory/up/{class_id}','Back\BackStoryController@up');
 Route::post('/backstory/updo','Back\BackStoryController@updo');
 Route::get('/backstory/del/{member_id}','Back\BackStoryController@del');
+Route::get('/backstory/pidel','Back\BackStoryController@pidel');
 //活动管理
 Route::get('backactive/index','Back\BackActiveController@index');
+Route::get('backactive/add','Back\BackActiveController@add');
+Route::post('backactive/adddo','Back\BackActiveController@adddo');
+Route::get('backactive/uniqueTitle','Back\BackActiveController@uniqueTitle');
+Route::get('/backactive/pagedata','Back\BackActiveController@pagedata');
+Route::get('/backactive/up/{active_id}','Back\BackActiveController@up');
+Route::post('/backactive/updo','Back\BackActiveController@updo');
+Route::get('/backactive/del/{active_id}','Back\BackActiveController@del');
+Route::get('/backactive/pidel','Back\BackActiveController@pidel');
+//留言管理
+Route::get("/backleave/index","Back\BackLeaveController@index");
+Route::get("/backleave/pagedata","Back\BackLeaveController@pagedata");
+Route::get("backleave/clickup","Back\BackLeaveController@clickup");
+Route::get('/backleave/del/{active_id}','Back\BackLeaveController@del');
+Route::get('/backleave/pidel','Back\BackLeaveController@pidel');
 
 

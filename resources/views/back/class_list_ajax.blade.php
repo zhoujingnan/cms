@@ -3,7 +3,7 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
           <tr>
             <th align="center" valign="middle" class="borderright">
-              选择
+             <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
             <th align="center" valign="middle" class="borderright">课堂名</th>

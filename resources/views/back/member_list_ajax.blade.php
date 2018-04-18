@@ -4,7 +4,7 @@
           <thead>
           <tr>
             <th align="center" valign="middle" class="borderright">
-              选择
+              <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
             <th align="center" valign="middle" class="borderright">会员名</th>
@@ -20,7 +20,7 @@
           @foreach($arr as $key =>$val)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
             <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" name="box">
+               <input type="checkbox" class="box" value="{{$val['member_id']}}">
             </td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_id']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_name']}}</td>

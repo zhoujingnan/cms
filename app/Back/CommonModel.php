@@ -4,8 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 class CommonModel extends Model{
 	//总条数
-	public function count($tableName){
-		$count=DB::select("SELECT * FROM `$tableName`");
+	public function count($tableName,$where){
+		$count=DB::select("SELECT * FROM `$tableName` WHERE $where");
 		return count($count);
 	}
 	//查询数据
@@ -45,6 +45,11 @@ class CommonModel extends Model{
 		$k=rtrim($k,",");
 		$v=rtrim($v,",");
 		$res=DB::insert("INSERT INTO `$tableName`($k) VALUES($v)");
+		return $res;
+	}
+	//批删
+	public function pidel($tableName,$where){
+		$res=DB::delete("DELETE FROM `$tableName` WHERE $where");
 		return $res;
 	}
 
