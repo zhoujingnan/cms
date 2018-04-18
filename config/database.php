@@ -55,6 +55,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => '39.106.96.144',
+            // 'host' => '127.0.0.1',
             'port' => '3306',
             'database' =>'cms',
             'username' => 'root',

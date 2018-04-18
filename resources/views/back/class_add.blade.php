@@ -41,7 +41,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：网站管理&nbsp;&nbsp;>&nbsp;&nbsp;添加会员信息</td>
+    <td width="99%" align="left" valign="top">您的位置：网站管理&nbsp;&nbsp;>&nbsp;&nbsp;添加课堂信息</td>
   </tr>
   <tr>
     <td align="left" valign="top" id="addinfo">
@@ -50,52 +50,31 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form action="{{url('/backmember/upload')}}" enctype="multipart/form-data" method="post">
+    <form action="{{url('/backclass/adddo')}}" enctype="multipart/form-data" method="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
     	<input type="hidden" name="_token" value="{{csrf_token()}}">
       	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         	<td align="right" valign="middle" class="borderright borderbottom bggray">	
-        		会员名：
+        		课堂标题：
         	</td>
         	<td align="left" valign="middle" class="borderright borderbottom main-for">
-        		<input type="text" name="member_name" value="" class="text-word">
-        		<span class="s_member_name"></span>
+        		<input type="text" name="class_title" value="" class="text-word">
+        		<span class="s_class_title"></span>
        		</td>
         </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         	<td align="right" valign="middle" class="borderright borderbottom bggray">	
-        		会员头像：
+        		课堂链接：
         	</td>
         	<td align="left" valign="middle" class="borderright borderbottom main-for">
-        		<input type="file" name="member_img">
+        		<input type="file" name="class_url">
         	</td>
        </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        	<td align="right" valign="middle" class="borderright borderbottom bggray">会员年龄：</td>
+        	<td align="right" valign="middle" class="borderright borderbottom bggray">课堂简介：</td>
         	<td align="left" valign="middle" class="borderright borderbottom main-for">
-        		<input type="number" name="member_age" value="" class="text-word">
-        		<span class="s_member_age"></span>
-        	</td>
-      </tr>
-	  <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        	<td align="right" valign="middle" class="borderright borderbottom bggray">会员工作：</td>
-        	<td align="left" valign="middle" class="borderright borderbottom main-for">
-        		<input type="text" name="member_work" value="" class="text-word">
-        		<span class="s_member_work"></span>
-        	</td>
-      </tr>
-	  <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        	<td align="right" valign="middle" class="borderright borderbottom bggray">会员薪资：</td>
-        	<td align="left" valign="middle" class="borderright borderbottom main-for">
-        		<input type="text" name="member_money" value="" class="text-word">
-        		<span class="s_member_money"></span>
-       	 	</td>
-      </tr>
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        	<td align="right" valign="middle" class="borderright borderbottom bggray">会员地址：</td>
-        	<td align="left" valign="middle" class="borderright borderbottom main-for">
-				<input type="text" name="member_address" class="text-word">
-				<span class="s_member_address"></span>
+        		<input type="text" name="class_desc" value="" class="text-word">
+        		<span class="s_class_desc"></span>
         	</td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
@@ -113,75 +92,45 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </html>
 <script>
 $(function(){
-	var menber_name=false;
-	var menber_age=false;
-	var menber_work=false;
-	var menber_money=false;
-	var menber_address=false;
-	$("[name='member_name']").trigger('focus');
+	var title=false;
+	var desc=false;
+	$("[name='class_title']").trigger('focus');
 	//判断会员名
-	$("[name='member_name']").blur(function(){
-		var member_name=$(this).val();
-		if(member_name){
+	$("[name='class_title']").blur(function(){
+		var class_title=$(this).val();
+		if(class_title){
 			$.ajax({
 				type:'get',
-				url:"<?php echo url('backmember/uniqueName')?>",
-				data:{member_name:member_name},
+				url:"<?php echo url('backclass/uniqueTitle')?>",
+				data:{class_title:class_title},
 				success:function(res){
 					if(res==1){
-						$(".s_member_name").html('<font color="red">用户名已存在</font>');
-						menber_name=false;
+						$(".s_class_title").html('<font color="red">课堂名已存在</font>');
+						title=false;
 						return false;
 					}else{
-						$(".s_member_name").html('<font color="green">√</font>');
-						menber_name=true;return true;
+						$(".s_class_title").html('<font color="green">√</font>');
+						title=true;return true;
 					}
 				}
 			})
 		}else{
-			$(".s_member_name").html('<font color="red">用户名不能为空</font>');
-			flag=false;return false;
+			$(".s_class_title").html('<font color="red">请填写课堂名</font>');
+			title=false;return false;
 		}
 	})
 	//判断年龄
-	$("[name='member_age']").blur(function(){
-		var member_age=$(this).val();
-		if(member_age){
-			$(".s_member_age").html('<font color="green">√</font>');menber_age=true;return true;
+	$("[name='class_desc']").blur(function(){
+		var class_desc=$(this).val();
+		if(class_desc){
+			$(".s_class_desc").html('<font color="green">√</font>');desc=true;return true;
 		}else{
-			$(".s_member_age").html('<font color="red">请填写年龄</font>');menber_age=false;return false;
-		}
-	})
-	//判断工作
-	$("[name='member_work']").blur(function(){
-		var member_work=$(this).val();
-		if(member_work){
-			$(".s_member_work").html('<font color="green">√</font>');menber_work=true;return true;
-		}else{
-			$(".s_member_work").html('<font color="red">请填写工作</font>');menber_work=false;return false;
+			$(".s_class_desc").html('<font color="red">请填写简介</font>');desc=false;return false;
 		}
 	})	
-	//判断薪资
-	$("[name='member_money']").blur(function(){
-		var member_money=$(this).val();
-		if(member_money){
-			$(".s_member_money").html('<font color="green">√</font>');menber_money=true;return true;
-		}else{
-			$(".s_member_money").html('<font color="red">请填写薪资</font>');menber_money=false;return false;
-		}
-	})		
-	//判断地址
-	$("[name='member_address']").blur(function(){
-		var member_address=$(this).val();
-		if(member_address){
-			$(".s_member_address").html('<font color="green">√</font>');menber_address=true;return true;
-		}else{
-			$(".s_member_address").html('<font color="red">请填写地址</font>');menber_address=false;return false;
-		}
-	})		
 	//判断提交按钮
 	$("form").submit(function(){
-		if(menber_address==true&&menber_name==true&&menber_age==true&&menber_work==true&&menber_money==true){
+		if(desc==true&&title==desc){
 			return true;
 		}else{
 			return false;

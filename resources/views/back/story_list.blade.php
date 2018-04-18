@@ -34,7 +34,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <thead>
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：会员管理</td>
+    <td width="99%" align="left" valign="top">您的位置：故事管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -42,12 +42,12 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   		<tr>
    		 <td width="90%" align="left" valign="middle">
 	         <form method="post" action="">
-	         <span>会员名：</span>
+	         <span>故事名：</span>
 	         <input type="text" name="" value="" class="text-word">
 	         <input name="" type="button" value="查询" class="text-but">
 	         </form>
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backmember/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增会员</a></td>
+  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backstory/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增故事</a></td>
   		</tr>
 	</table>
     </td>
@@ -62,32 +62,26 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
               选择
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
-            <th align="center" valign="middle" class="borderright">会员名</th>
-            <th align="center" valign="middle" class="borderright">头像</th>
-            <th align="center" valign="middle" class="borderright">年龄</th>
-            <th align="center" valign="middle" class="borderright">工作</th>
-            <th align="center" valign="middle" class="borderright">薪资</th>
-            <th align="center" valign="middle" class="borderright">地址</th>
+            <th align="center" valign="middle" class="borderright">故事名</th>
+            <th align="center" valign="middle" class="borderright">分享者</th>
+            <th align="center" valign="middle" class="borderright">故事简介</th>
             <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($arr as $key =>$val)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
             <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" class="box" value="{{$val['member_id']}}">
+              <input type="checkbox" class="box" value="{{$val['story_id']}}">
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_id']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_name']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_id']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_title']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">
-              <img src="{{asset($val['member_img'])}}" alt="" width="150">
+             {{$val['member_name']}}
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_age']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_work']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_money']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['member_address']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_desc']}}</td>
             <td align="center" valign="middle" class="borderbottom">
-              <a href="{{url('backmember/up',['member_id'=>$val['member_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
+              <a href="{{url('backstory/up',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
               <span class="gray">&nbsp;|&nbsp;</span>
-              <a href="{{url('backmember/del',['member_id'=>$val['member_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+              <a href="{{url('backstory/del',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
             </td>
           </tr>
           @endforeach
@@ -148,7 +142,7 @@ $(function(){
       var text_word=$(".text-word").val();
       $.ajax({
         type:'get',
-        url:"<?php echo url('backmember/pagedata')?>",
+        url:"<?php echo url('backstory/pagedata')?>",
         data:{page:p,key:text_word},
         success:function(arr){
           // console.log(arr);
