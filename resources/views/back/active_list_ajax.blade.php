@@ -6,26 +6,30 @@
               <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
-            <th align="center" valign="middle" class="borderright">故事名</th>
-            <th align="center" valign="middle" class="borderright">分享者</th>
-            <th align="center" valign="middle" class="borderright">故事简介</th>
+            <th align="center" valign="middle" class="borderright">活动名</th>
+            <th align="center" valign="middle" class="borderright">活动图片</th>
+            <th align="center" valign="middle" class="borderright">活动地址</th>
+            <th align="center" valign="middle" class="borderright">活动时间</th>
             <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($arr as $key =>$val)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
             <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" class="box" value="{{$val['story_id']}}">
+              <input type="checkbox" class="box" value="{{$val['active_id']}}">
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_id']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_title']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['active_id']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['active_title']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">
-             {{$val['member_name']}}
+            	<img src="{{asset($val['active_img'])}}" alt="" width="150">
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_desc']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">
+             {{$val['active_address']}}
+            </td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{date("Y-m-d H:i",$val['active_start_time'])}}--{{date("Y-m-d H:i",$val['active_end_time'])}}</td>
             <td align="center" valign="middle" class="borderbottom">
-              <a href="{{url('backstory/up',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
+              <a href="{{url('backactive/up',['active_id'=>$val['active_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
               <span class="gray">&nbsp;|&nbsp;</span>
-              <a href="{{url('backstory/del',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+              <a href="{{url('backactive/del',['active_id'=>$val['active_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
             </td>
           </tr>
           @endforeach

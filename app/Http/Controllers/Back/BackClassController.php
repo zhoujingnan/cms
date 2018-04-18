@@ -10,7 +10,7 @@ class BackClassController extends Controller{
 	public function index(){
 		$obj=new ClassModel();
 		//总条数
-		$count=$obj->count("class");
+		$count=$obj->count("class","1=1");
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -33,7 +33,7 @@ class BackClassController extends Controller{
 		}
 		$obj=new ClassModel();
 		//总条数
-		$count=$obj->count("class");
+		$count=$obj->count("class",$where);
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -103,6 +103,8 @@ class BackClassController extends Controller{
 		if($res){
 			echo "会员修改成功";
 			return redirect('backclass/index');			
+		}else{
+			return redirect("backclass/index");
 		}
 	}	
 	//删除
@@ -116,6 +118,16 @@ class BackClassController extends Controller{
 			echo "删除成功";
 			return redirect('backclass/index');
 		}
+	}	
+	//批删
+	public function pidel(){
+		$str=$_GET['str'];
+		$obj=new ClassModel();
+		$res=$obj->pidel('class',"`class_id` in ($str)");
+		if($res){
+			echo 1;die;
+		}
+
 	}	
 }
 

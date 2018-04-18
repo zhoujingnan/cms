@@ -34,7 +34,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <thead>
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：活动管理</td>
+    <td width="99%" align="left" valign="top">您的位置：留言管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -42,12 +42,12 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   		<tr>
    		 <td width="90%" align="left" valign="middle">
 	         <form method="post" action="">
-	         <span>活动名：</span>
+	         <span>留言内容：</span>
 	         <input type="text" name="" value="" class="text-word">
 	         <input name="" type="button" value="查询" class="text-but">
 	         </form>
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backactive/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增活动</a></td>
+  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"></td>
   		</tr>
 	</table>
     </td>
@@ -59,33 +59,33 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
           <tr>
             <th align="center" valign="middle" class="borderright">
-             <span class="pidel">批删</span>
+                <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
-            <th align="center" valign="middle" class="borderright">活动名</th>
-            <th align="center" valign="middle" class="borderright">活动图片</th>
-            <th align="center" valign="middle" class="borderright">活动地址</th>
-            <th align="center" valign="middle" class="borderright">活动时间</th>
+            <th align="center" valign="middle" class="borderright">IP</th>
+            <th align="center" valign="middle" class="borderright">内容</th>
+            <th align="center" valign="middle" class="borderright">时间</th>
+            <th align="center" valign="middle" class="borderright">状态</th>
             <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($arr as $key =>$val)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
             <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" class="box" value="{{$val['active_id']}}">
+              <input type="checkbox" class="box" value="{{$val['leave_id']}}">
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['active_id']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['active_title']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">
-            	<img src="{{asset($val['active_img'])}}" alt="" width="150">
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_id']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_ip']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_content']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_time']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom" title="{{$val['leave_id']}}">	
+            @if($val['status']==1)
+            	<span class="ss" title="{{$val['status']}}">显示</span>
+            @else
+            	<span class="ss" title="{{$val['status']}}">不显示</span>
+            @endif
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">
-             {{$val['active_address']}}
-            </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{date("Y-m-d H:i",$val['active_start_time'])}}--{{date("Y-m-d H:i",$val['active_end_time'])}}</td>
             <td align="center" valign="middle" class="borderbottom">
-              <a href="{{url('backactive/up',['active_id'=>$val['active_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
-              <span class="gray">&nbsp;|&nbsp;</span>
-              <a href="{{url('backactive/del',['active_id'=>$val['active_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+              <a href="{{url('backleave/del',['leave_id'=>$val['leave_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
             </td>
           </tr>
           @endforeach
@@ -102,6 +102,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <a href="javascript:void(0)" class="end" target="mainFrame" onFocus="this.blur()">尾页</a>
     </td>
   </tr>
+
   </tbody>
   <tfoot>
   </tfoot>
@@ -153,7 +154,7 @@ $(function(){
         s=str.substr(0,str.length-1);
         $.ajax({
           type:'get',
-          url:"<?php echo url('backactive/pidel')?>",
+          url:"<?php echo url('backleave/pidel')?>",
           data:{str:s},
           success:function(msg){
             console.log(msg)
@@ -163,13 +164,13 @@ $(function(){
           }
         })        
       }
-    })     
+    })
     //发送ajax
     function ajaxPage(p){
       var text_word=$(".text-word").val();
       $.ajax({
         type:'get',
-        url:"<?php echo url('backactive/pagedata')?>",
+        url:"<?php echo url('backleave/pagedata')?>",
         data:{page:p,key:text_word},
         success:function(arr){
           // console.log(arr);
@@ -178,6 +179,28 @@ $(function(){
         }
       })
     }
+    //即点即改
+    $(document).on("click",".ss",function(){
+    	var span=$(this).html();
+    	_this=$(this);
+    	var id=$(this).parent().attr("title");
+    	$.ajax({
+    		type:'get',
+    		url:"<?php echo url('backleave/clickup');?>",
+    		data:{leave_id:id,status:span},
+    		success:function(msg){
+    			console.log(msg)
+  				if(msg==1){
+  					if(span=="显示"){
+  						_this.html("不显示");
+  					}
+  					else{
+  						_this.html("显示");
+  					}
+  				}
+    		}
+    	})
+    })
 })
 
 

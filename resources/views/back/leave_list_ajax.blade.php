@@ -3,29 +3,32 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
           <tr>
             <th align="center" valign="middle" class="borderright">
-              <span class="pidel">批删</span>
+                <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
-            <th align="center" valign="middle" class="borderright">故事名</th>
-            <th align="center" valign="middle" class="borderright">分享者</th>
-            <th align="center" valign="middle" class="borderright">故事简介</th>
+            <th align="center" valign="middle" class="borderright">IP</th>
+            <th align="center" valign="middle" class="borderright">内容</th>
+            <th align="center" valign="middle" class="borderright">时间</th>
+            <th align="center" valign="middle" class="borderright">状态</th>
             <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($arr as $key =>$val)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
             <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" class="box" value="{{$val['story_id']}}">
+              <input type="checkbox" class="box" value="{{$val['leave_id']}}">
             </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_id']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_title']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">
-             {{$val['member_name']}}
-            </td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['story_desc']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_id']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_ip']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_content']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_time']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom" title="{{$val['leave_id']}}">
+            @if($val['status']==1)
+            	<span class="ss" title="{{$val['status']}}">显示</span>
+            @else
+            	<span class="ss" title="{{$val['status']}}">不显示</span>
+            @endif
             <td align="center" valign="middle" class="borderbottom">
-              <a href="{{url('backstory/up',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
-              <span class="gray">&nbsp;|&nbsp;</span>
-              <a href="{{url('backstory/del',['story_id'=>$val['story_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+              <a href="{{url('backleave/del',['leave_id'=>$val['leave_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
             </td>
           </tr>
           @endforeach

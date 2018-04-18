@@ -10,7 +10,7 @@ class BackStoryController extends Controller{
 	public function index(){
 		$obj=new StoryModel();
 		//总条数
-		$count=$obj->count("story");
+		$count=$obj->count("story","1=1");
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -22,6 +22,8 @@ class BackStoryController extends Controller{
 		//数据
 		$arr=json_decode(json_encode($obj->select('story',"1=1",$offet,$limit)),true);
 		$data=json_decode(json_encode($obj->get('member',"1=1")),true);
+		// print_r($arr);
+		// print_r($data);die;
 		foreach ($arr as $key => $val) {
 			foreach ($data as $k => $v) {
 				if($val['member_id']==$v['member_id']){
@@ -41,7 +43,7 @@ class BackStoryController extends Controller{
 		}
 		$obj=new StoryModel();
 		//总条数
-		$count=$obj->count("story");
+		$count=$obj->count("story",$where);
 		//每页显示的条数
 		$limit=5;
 		//总页数
@@ -96,6 +98,8 @@ class BackStoryController extends Controller{
 		if($res){
 			echo "修改成功";
 			return redirect('backstory/index');
+		}else{
+			return redirect("backstory/index");
 		}
 	}		
 	//添加
@@ -121,6 +125,16 @@ class BackStoryController extends Controller{
 			return redirect('backstory/index');
 		}
 	}		
+	//批删
+	public function pidel(){
+		$str=$_GET['str'];
+		$obj=new StoryModel();
+		$res=$obj->pidel('story',"`story_id` in ($str)");
+		if($res){
+			echo 1;die;
+		}
+
+	}	
 }
 
 

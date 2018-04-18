@@ -59,7 +59,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
           <tr>
             <th align="center" valign="middle" class="borderright">
-              选择
+                <span class="pidel">批删</span>
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
             <th align="center" valign="middle" class="borderright">会员名</th>
@@ -104,6 +104,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <a href="javascript:void(0)" class="end" target="mainFrame" onFocus="this.blur()">尾页</a>
     </td>
   </tr>
+
   </tbody>
   <tfoot>
   </tfoot>
@@ -142,6 +143,29 @@ $(function(){
     $(document).on("click",".text-but",function(){
         var text_word=$(".text-word").val();
         ajaxPage(1);      
+    })
+    //批删
+    $(document).on("click",".pidel",function(){
+      if(confirm("are you sure delete?")){
+        var box=$(":checked");
+        var page=$("[name='page']").val();
+        var str='';
+        $.each(box,function(i,v){
+          str+=$(this).val()+",";
+        })
+        s=str.substr(0,str.length-1);
+        $.ajax({
+          type:'get',
+          url:"<?php echo url('backmember/pidel')?>",
+          data:{str:s},
+          success:function(msg){
+            console.log(msg)
+            if(msg==1){
+              ajaxPage(page);
+            }
+          }
+        })        
+      }
     })
     //发送ajax
     function ajaxPage(p){

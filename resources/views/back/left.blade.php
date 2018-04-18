@@ -48,10 +48,7 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       </div>
       <div>
         <span>留言管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+        <a href="{{url('backleave/index')}}" target="mainFrame" onFocus="this.blur()">留言列表</a>
       </div>
       <div>
         <span>友情链接</span>
