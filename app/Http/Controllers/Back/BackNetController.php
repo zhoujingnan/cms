@@ -5,8 +5,23 @@
 namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use DB;
+use Session;
 class BackNetController extends Controller{
 	public function index(){
+		$admin_id = Session::get('admin_id');
+		$a_data = DB::select("select * from `admin` where admin_id=$admin_id");
+		$a_data = json_decode(json_encode($a_data), true)[0];
+		$a_data['last_login_time'] = $a_data['last_login_time']+3600*8;
+		$h = date("H",$a_data['last_login_time']);
+		if($h>=0 && $h<6){
+			$a_data['h'] = "凌晨好";
+		}else if($h>=6 && $h<12){
+			$a_data['h'] = "上午好";
+		}else if($h>=12 && $h<18){
+			$a_data['h'] = "下午好";
+		}else if($h>=18 && $h<24){
+			$a_data['h'] = "晚上好";
+		}
 		$n_data = DB::select('select * from `net`');
 		$data = json_decode(json_encode($n_data), true)[0];
 		$c_data = DB::select('select * from `contact`');
@@ -15,7 +30,7 @@ class BackNetController extends Controller{
 		if(empty($data)){
 			return view("back.main");
 		}else{
-			return view("back.main",array('arr'=>$data,'data'=>$c_data));
+			return view("back.main",array('arr'=>$data,'data'=>$c_data,'admin_data'=>$a_data));
 		}
 	}
 	public function mainlist(){

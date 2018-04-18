@@ -23,7 +23,7 @@ class BackLoginController extends Controller{
 			$res=$obj->up($last_ip,$data[0]['admin_id'],$last_login_time);
 			if($res){
 				//存储session
-				Session::flash('admin_id', $data[0]['admin_id']);
+				Session::put('admin_id', $data[0]['admin_id']);
 				return redirect('backindex');				
 			}
 		}
