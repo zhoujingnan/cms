@@ -18,6 +18,11 @@ class CommonModel extends Model{
 		$arr=DB::select("SELECT * FROM `$tableName` WHERE $where LIMIT $offet,$limit");
 		return $arr;		
 	}
+	//执行查询sql
+	public function sql($sql){
+		$arr=DB::select($sql);
+		return $arr;
+	}
 	//删除
 	public function del($tableName,$where="1=1"){
 		$res=DB::delete("DELETE FROM `$tableName` WHERE $where");
