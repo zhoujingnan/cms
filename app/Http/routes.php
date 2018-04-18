@@ -28,13 +28,17 @@ Route::get('/backnet/info','Back\BackNetController@info');
 Route::get('/backnet/message','Back\BackNetController@message');
 Route::get('/backnet/menu','Back\BackNetController@menu');
 Route::get('/backnet/netadd','Back\BackNetController@netadd');
+Route::get('/backnet/conadd','Back\BackNetController@conadd');
 Route::post('/backnet/netdo','Back\BackNetController@netdo');
+Route::post('/backnet/condo','Back\BackNetController@condo');
 //广告管理
 Route::get('/backadvertising/add','Back\BackAdvertisingController@add');
 Route::post('/backadvertising/add_do','Back\BackAdvertisingController@add_do');
 Route::get('/backadvertising/ad_list','Back\BackAdvertisingController@ad_list');
 Route::get('/backadvertising/ad_up/{id}','Back\BackAdvertisingController@ad_up');
 Route::post('/backadvertising/up_do','Back\BackAdvertisingController@up_do');
+Route::get('/backadvertising/pagedata','Back\BackAdvertisingController@pagedata');
+Route::get('/backadvertising/del','Back\BackAdvertisingController@del');
 
 //网站
 Route::controller('/backnet','Back\BackNetController');

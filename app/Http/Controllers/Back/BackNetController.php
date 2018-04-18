@@ -9,11 +9,13 @@ class BackNetController extends Controller{
 	public function index(){
 		$n_data = DB::select('select * from `net`');
 		$data = json_decode(json_encode($n_data), true)[0];
+		$c_data = DB::select('select * from `contact`');
+		$c_data = json_decode(json_encode($c_data), true)[0];
 		//var_dump($data);
 		if(empty($data)){
 			return view("back.main");
 		}else{
-			return view("back.main",array('arr'=>$data));
+			return view("back.main",array('arr'=>$data,'data'=>$c_data));
 		}
 	}
 	public function mainlist(){
@@ -68,8 +70,49 @@ class BackNetController extends Controller{
 		};
 		if($res){
 			return redirect('backnet/index');
+		}		
+	}
+	//联系我们
+	public function conadd(){
+		$n_data = DB::select('select * from `contact`');
+		$data = json_decode(json_encode($n_data), true)[0];
+		//var_dump($data);
+		if(empty($data)){
+			return view("back.conadd");
+		}else{
+			
+			return view("back.conadd",array('arr'=>$data));
+		}		
+	}
+	public function condo(){
+		$arr = $_POST;
+		$img = $_FILES;
+		//var_dump($img['code']['name']);die;
+		if($img['code']['name']==""){
+			$code = $arr['code'];
+		}else{
+			if($img['code']['error']==0){
+				$postfix = substr($img['code']['name'],strpos($img['code']['name'],'.'));
+				$code = "images/".time()."-".rand(1000,9999).$postfix;
+				move_uploaded_file($_FILES["code"]["tmp_name"],  $code);
+			}
 		}
-		
+		$address = isset($_POST['address'])?htmlspecialchars($_POST['address'],ENT_QUOTES ):"";
+		$bei = isset($_POST['bei'])?htmlspecialchars($_POST['bei'],ENT_QUOTES ):"";
+		$post_code = isset($_POST['post_code'])?htmlspecialchars($_POST['post_code'],ENT_QUOTES ):"";
+		$phone = isset($_POST['phone'])?htmlspecialchars($_POST['phone'],ENT_QUOTES ):"";
+		$service_qq = isset($_POST['service_qq'])?htmlspecialchars($_POST['service_qq'],ENT_QUOTES ):"";
+		$n_data = DB::select('select * from `contact`');
+		if(empty($n_data)){
+			//添加企业信息
+			$res = DB::insert('insert into `contact`(net_address,net_bei,net_post_code,net_phone,service_qq,net_code) values(?,?,?,?,?,?)',["$address","$bei","$post_code","$phone","$service_qq","$code"]);
+		}else{
+			//修改企业信息
+			$res = DB::update("update `contact` set net_address='$address',net_bei='$bei',net_post_code='$post_code',net_phone='$phone',service_qq='$service_qq',net_code='$code'");
+		};
+		if($res){
+			return redirect('backnet/index');
+		}		
 	}
 
 }

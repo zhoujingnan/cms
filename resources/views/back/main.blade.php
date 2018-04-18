@@ -42,10 +42,21 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 		网站logo：<img src="{{asset($arr['logo'])}}" width="100" /><br/>
 		网站坐标：x:{{$arr['x_coord']}},y:{{$arr['y_coord']}}<br/>
 		网站描述：{{$arr['net_desc']}}<br/>
-		<button id="update">编辑</button>
+		<button id="net_update">编辑</button>
     </div>
     </td>
-    
+    <td align="left" valign="top" width="49%">
+    <div class="main-tit">联系我们</div>
+    <div class="main-con">
+		企业地址：{{$data['net_address']}}<br/>
+		备案号：{{$data['net_bei']}}<br/>
+		邮编：{{$data['net_post_code']}}<br />
+		企业二维码：<img src="{{asset($data['net_code'])}}" width="100" /><br/>
+		联系电话：{{$data['net_phone']}}<br/>
+		客服QQ：{{$data['service_qq']}}<br/>
+		<button id="con_update">编辑</button>
+    </div>
+    </td>
   </tr>
   <tr>
     <td colspan="2" align="left" valign="top">
@@ -57,8 +68,11 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 </table>
 <script>
 	$(function(){
-		$(document).on('click','#update',function(){
+		$(document).on('click','#net_update',function(){
 			location.href="<?php echo url('backnet/netadd');?>";
+		})
+		$(document).on('click','#con_update',function(){
+			location.href="<?php echo url('backnet/conadd');?>";
 		})
 	})
 </script>

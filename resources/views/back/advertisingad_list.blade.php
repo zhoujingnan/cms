@@ -55,7 +55,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <td align="left" valign="top">
     
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+	<thead>
       <tr>
+        <th align="center" valign="middle" class="borderright"><button id="dels">批删</button></th>
         <th align="center" valign="middle" class="borderright">编号</th>
         <th align="center" valign="middle" class="borderright">广告名</th>
         <th align="center" valign="middle" class="borderright">广告类型</th>
@@ -66,8 +68,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">描述</th>
         <th align="center" valign="middle">操作</th>
       </tr>
+	 </thead>
+	 <tbody id="to">
       @foreach($arr as $key =>$val)
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="center" valign="middle" class="borderright borderbottom"><input type="checkbox" name="dels" class="dels" id="{{$val['ad_id']}}" /></td>
         <td align="center" valign="middle" class="borderright borderbottom">{{$val['ad_id']}}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{$val['ad_name']}}</td>
         <td align="center" valign="middle" class="borderright borderbottom">
@@ -95,6 +100,17 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 		</td>
       </tr>
       @endforeach
+	 <tr>
+    <input type="hidden" name="page" value="{{$page}}">
+    <input type="hidden" name="totalpage" value="{{$totalpage}}">
+    <td align="center" valign="top" colspan="10" class="fenye">共{{$count}}条数据&nbsp;&nbsp;当前第{{$page}}页
+        <a href="javascript:void(0)" class="first" target="mainFrame" onFocus="this.blur()">首页</a>&nbsp;&nbsp;
+        <a href="javascript:void(0)" class="prev" target="mainFrame" onFocus="this.blur()">上一页</a>&nbsp;&nbsp;
+        <a href="javascript:void(0)" class="next" target="mainFrame" onFocus="this.blur()">下一页</a>&nbsp;&nbsp;
+        <a href="javascript:void(0)" class="end" target="mainFrame" onFocus="this.blur()">尾页</a>
+    </td>
+  </tr>
+	 </tbody>
     </table></td>
     </tr>
   <tr>
@@ -104,11 +120,89 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </body>
 <script>
 	$(function(){
+		//删除
 		$(document).on('click','.del',function(){
 			var obj = $(this);
 			var id = obj.attr('id');
-			alert(id)
+			var page = parseInt($("[name='page']").val());
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backadvertising/del')?>",
+				data:{id:id},
+				success:function(arr){
+					obj.parent().parent().remove();
+					ajaxPage(page);
+				}
+			})
 		})
+		//批删
+		$(document).on('click','#dels',function(){
+			if(confirm("are you sure delete?")){
+				var id = "";
+				var page = parseInt($("[name='page']").val());
+				$(".dels:checked").each(function(i,v){
+					var aid = $(v).attr('id');
+					id += aid+",";
+				})
+				var len = id.length-1;
+				id = id.substr(0,len);
+				$.ajax({
+					type:'get',
+					url:"<?php echo url('backadvertising/del')?>",
+					data:{id:id},
+					success:function(arr){
+						$(".dels:checked").each(function(i,v){
+							$(v).parent().parent().remove();
+						})
+						ajaxPage(page);
+					}
+				})
+			}		
+		})
+		//搜索
+		$(document).on("click",".text-but",function(){
+			var text_word=$(".text-word").val();
+			ajaxPage(1);      
+		})
+		//分析当前页
+		$(document).on("click",".fenye a",function(){
+			var page=parseInt($("[name='page']").val());
+			var totalpage=parseInt($("[name='totalpage']").val());
+			if($(this).is(".first")){
+				p=1;
+			}
+			if($(this).is(".prev")){
+				p=page-1;
+				if(p<1){
+					p=1;
+				}
+			}
+			if($(this).is(".next")){
+				p=page+1;
+				if(p>totalpage){
+					p=totalpage;
+				}			  
+			}        
+			if($(this).is(".end")){
+				p=totalpage;
+			}     			
+				ajaxPage(p);      
+		})
+		//发送ajax
+		function ajaxPage(p){
+			//alert(p)
+			var text_word=$(".text-word").val();
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backadvertising/pagedata')?>",
+				data:{page:p,key:text_word},
+				success:function(arr){
+					console.log(arr);
+					$("#to").empty();
+					$("#to").html(arr);
+				}
+			})
+		}
 	})
 </script>
 </html>
