@@ -93,6 +93,8 @@ Route::get('/backleave/del/{active_id}','Back\BackLeaveController@del');
 Route::get('/backleave/pidel','Back\BackLeaveController@pidel');
 //用户管理
 Route::get("/backadmin/index","Back\BackAdminController@index");
+Route::get("/backadmin/add","Back\BackAdminController@add");
+Route::post("/backadmin/add_do","Back\BackAdminController@add_do");
 //角色管理
 Route::get("/backrole/index","Back\BackRoleController@index");
 //权限管理

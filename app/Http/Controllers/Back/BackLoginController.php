@@ -10,6 +10,7 @@ class BackLoginController extends Controller{
 	public function getLogin(){
 		$arr=$_GET;
 		$obj=new LoginModel();
+		$arr['pwd'] = md5($arr['pwd']);
 		$arr=$obj->find($arr['username'],$arr['pwd']);
 		if(empty($arr)){
 			echo "用户名或密码错误！跳转中....";
