@@ -36,10 +36,10 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       <div>
         <span>栏目管理</span>
         <a href="{{asset('backcolumn')}}" target="mainFrame" onFocus="this.blur()">栏目列表</a>
-        <a href="{{asset('backmember')}}" target="mainFrame" onFocus="this.blur()">会员管理</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">课堂管理</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">故事管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">活动管理</a>
+        <a href="{{asset('backmember/index')}}" target="mainFrame" onFocus="this.blur()">会员管理</a>
+        <a href="{{url('backclass/index')}}" target="mainFrame" onFocus="this.blur()">课堂管理</a>
+        <a href="{{url('backstory/index')}}" target="mainFrame" onFocus="this.blur()">故事管理</a>
+        <a href="{{url('backactive/index')}}" target="mainFrame" onFocus="this.blur()">活动管理</a>
       </div>
       <div>
         <span>广告管理</span>
