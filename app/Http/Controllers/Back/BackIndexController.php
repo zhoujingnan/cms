@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use DB;
 class BackIndexController extends Controller{
-	public function getIndex(){
+	public function getIndex(){ 
 		return view("back.index");
 	}
 	public function getTop(){
-		$n_data = DB::select('select * from `net`');
+		$n_data = DB::select('SELECT * FROM `net`');
 		$data = json_decode(json_encode($n_data), true)[0];
 		//var_dump($data);
 		if(empty($data)){
