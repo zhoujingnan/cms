@@ -42,7 +42,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   		<tr>
    		 <td width="90%" align="left" valign="middle">
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backrole/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增角色</a></td>
+  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;">
+  		  		<a href="{{url('backrole/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增角色</a>
+  		 </td>
   		</tr>
 	</table>
     </td>
@@ -68,6 +70,8 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['role_id']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['role_name']}}</td>
             <td align="center" valign="middle" class="borderbottom">
+              <a href="{{url('backrole/addpower',['role_id'=>$val['role_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">添加权限</a>
+              <span class="gray">&nbsp;|&nbsp;</span>
               <a href="{{url('backrole/up',['role_id'=>$val['role_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
               <span class="gray">&nbsp;|&nbsp;</span>
               <a href="{{url('backrole/del',['role_id'=>$val['role_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>

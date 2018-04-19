@@ -78,6 +78,38 @@ class BackRoleController extends Controller{
 		}
 
 	}	
+	//添加权限
+	public function addpower($role_id){
+		$obj=new RoleModel();
+		$sql="SELECT * FROM `role_power` AS r_p INNER JOIN `power` AS p ON r_p.power_id=p.power_id WHERE r_p.role_id=$role_id";
+		$arr=json_decode(json_encode($obj->sql($sql)),true);
+		$id=array();
+		foreach ($arr as $key => $val) {
+			$id[]=$val['power_id'];
+		}
+		$role=json_decode(json_encode($obj->get("role","`role_id`=$role_id")),true);
+		$data=json_decode(json_encode($obj->get('power',"1=1")),true);
+		return view('back.role_add_power',['id'=>$id,'data'=>$data,'role'=>$role]);
+	}
+	public function addpowerdo(){
+		$arr=$_POST;
+		unset($arr['_token']);
+		$data=array();
+		foreach ($arr['power_id'] as $key => $val) {
+			$data[$key]['role_id']=$arr['role_id'];
+			$data[$key]['power_id']=$val;
+		}
+		$role_id=$data[0]['role_id'];
+		$obj=new RoleModel();
+		$obj->del("role_power","`role_id`=$role_id");
+		foreach ($data as $key => $val) {
+			$res=$obj->add("role_power",$val);
+		}
+		if($res){
+			echo "修改权限成功";
+			return redirect("backrole/index");
+		}
+	}
 }
 
 

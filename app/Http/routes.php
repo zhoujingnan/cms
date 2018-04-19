@@ -104,6 +104,8 @@ Route::post("/backrole/updo","Back\BackRoleController@updo");
 Route::get("/backrole/uniqueTitle","Back\BackRoleController@uniqueTitle");
 Route::get('/backrole/del/{active_id}','Back\BackRoleController@del');
 Route::get('/backrole/pidel','Back\BackRoleController@pidel');
+Route::get('/backrole/addpower/{role_id}','Back\BackRoleController@addpower');
+Route::post('/backrole/addpowerdo','Back\BackRoleController@addpowerdo');
 //权限管理
 Route::get("/backpower/index","Back\BackPowerController@index");
 
