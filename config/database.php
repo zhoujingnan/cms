@@ -55,6 +55,10 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             // 'host' => '39.106.96.144',
+<<<<<<< HEAD
+=======
+>>>>>>> ca5c9f7867d541f231d1df572b34cf09b6e9a726
+>>>>>>> 87b9478b9c84e342efac57d66b3f7b1a7a5e9a07
             'host' => '127.0.0.1',
             'port' => '3306',
             'database' =>'cms',
