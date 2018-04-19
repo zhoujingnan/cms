@@ -91,5 +91,8 @@ Route::get("/backleave/pagedata","Back\BackLeaveController@pagedata");
 Route::get("backleave/clickup","Back\BackLeaveController@clickup");
 Route::get('/backleave/del/{active_id}','Back\BackLeaveController@del');
 Route::get('/backleave/pidel','Back\BackLeaveController@pidel');
-
-
+//友情链接管理
+Route::get('/backlink/add','Back\BackLinkController@add');
+Route::post('/backlink/adddo','Back\BackLinkController@adddo');
+Route::get('/backlink/show','Back\BackLinkController@show');
+Route::get('/backlink/del','Back\BackLinkController@del');

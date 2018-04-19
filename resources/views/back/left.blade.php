@@ -52,11 +52,9 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       </div>
       <div>
         <span>友情链接</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-      </div>  
+        <a href="{{url('backlink/add')}}" target="mainFrame" onFocus="this.blur()">添加链接</a>
+        <a href="{{url('backlink/show')}}" target="mainFrame" onFocus="this.blur()">链接列表</a>
+      </div>
 	   
     </div>
 </body>
