@@ -101,10 +101,13 @@ Route::get("/backadmin/index","Back\BackAdminController@index");
 Route::get("/backadmin/add","Back\BackAdminController@add");
 Route::get("/backadmin/del","Back\BackAdminController@del");
 Route::get("/backadmin/sole","Back\BackAdminController@sole");
+Route::get("/backadmin/uppwd/{id}","Back\BackAdminController@uppwd");
 Route::get("/backadmin/roleadd/{id}","Back\BackAdminController@roleadd");
 Route::get("/backadmin/upstatus","Back\BackAdminController@upstatus");
+Route::get("/backadmin/is_pwd","Back\BackAdminController@is_pwd");
 Route::post("/backadmin/r_do","Back\BackAdminController@r_do");
 Route::post("/backadmin/add_do","Back\BackAdminController@add_do");
+Route::get("/backadmin/uppwd_do","Back\BackAdminController@uppwd_do");
 //角色管理
 Route::get("/backrole/index","Back\BackRoleController@index");
 Route::get("/backrole/add","Back\BackRoleController@add");
