@@ -91,8 +91,35 @@ Route::get("/backleave/pagedata","Back\BackLeaveController@pagedata");
 Route::get("backleave/clickup","Back\BackLeaveController@clickup");
 Route::get('/backleave/del/{active_id}','Back\BackLeaveController@del');
 Route::get('/backleave/pidel','Back\BackLeaveController@pidel');
+<<<<<<< HEAD
 //友情链接管理
 Route::get('/backlink/add','Back\BackLinkController@add');
 Route::post('/backlink/adddo','Back\BackLinkController@adddo');
 Route::get('/backlink/show','Back\BackLinkController@show');
 Route::get('/backlink/del','Back\BackLinkController@del');
+=======
+//用户管理
+Route::get("/backadmin/index","Back\BackAdminController@index");
+Route::get("/backadmin/add","Back\BackAdminController@add");
+Route::get("/backadmin/del","Back\BackAdminController@del");
+Route::get("/backadmin/sole","Back\BackAdminController@sole");
+Route::get("/backadmin/roleadd/{id}","Back\BackAdminController@roleadd");
+Route::get("/backadmin/upstatus","Back\BackAdminController@upstatus");
+Route::post("/backadmin/r_do","Back\BackAdminController@r_do");
+Route::post("/backadmin/add_do","Back\BackAdminController@add_do");
+//角色管理
+Route::get("/backrole/index","Back\BackRoleController@index");
+Route::get("/backrole/add","Back\BackRoleController@add");
+Route::post("/backrole/adddo","Back\BackRoleController@adddo");
+Route::get("/backrole/up/{role_id}","Back\BackRoleController@up");
+Route::post("/backrole/updo","Back\BackRoleController@updo");
+Route::get("/backrole/uniqueTitle","Back\BackRoleController@uniqueTitle");
+Route::get('/backrole/del/{active_id}','Back\BackRoleController@del');
+Route::get('/backrole/pidel','Back\BackRoleController@pidel');
+Route::get('/backrole/addpower/{role_id}','Back\BackRoleController@addpower');
+Route::post('/backrole/addpowerdo','Back\BackRoleController@addpowerdo');
+//权限管理
+Route::get("/backpower/index","Back\BackPowerController@index");
+Route::get("/backpower/add","Back\BackPowerController@add");
+
+>>>>>>> 80f490af76ddabf54c224b7eb9e40739cb587576

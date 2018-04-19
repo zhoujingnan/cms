@@ -10,6 +10,7 @@ class BackLoginController extends Controller{
 	public function getLogin(){
 		$arr=$_GET;
 		$obj=new LoginModel();
+		$arr['pwd'] = md5($arr['pwd']);
 		$arr=$obj->find($arr['username'],$arr['pwd']);
 		if(empty($arr)){
 			echo "用户名或密码错误！跳转中....";
@@ -23,7 +24,7 @@ class BackLoginController extends Controller{
 			$res=$obj->up($last_ip,$data[0]['admin_id'],$last_login_time);
 			if($res){
 				//存储session
-				Session::flash('admin_id', $data[0]['admin_id']);
+				Session::put('admin_id', $data[0]['admin_id']);
 				return redirect('backindex');				
 			}
 		}

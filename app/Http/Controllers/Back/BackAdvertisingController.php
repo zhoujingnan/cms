@@ -3,10 +3,10 @@
 广告管理
 */
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use DB;
 use App\Back\AdvertisingModel;
-class BackAdvertisingController extends Controller{
+class BackAdvertisingController extends BackCommonController{
 	//添加广告
 	public function add(){
 		return view("back.advertisingadd");
