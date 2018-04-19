@@ -70,7 +70,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         		@foreach($data as $key => $val)
         		<input type="checkbox" name="power_id[]" value="{{$val['power_id']}}" 
 					<?php if(in_array($val['power_id'],$id)){echo "checked";}?>
-        		>{{$val['power_name']}}>>控制器:{{$val['c_name']}} 方法：{{$val['a_name']}}<br>
+        		>{{$val['power_name']}}>>控制器:{{$val['c_name']}} <br>
         		@endforeach
        		</td>
         </tr>      	

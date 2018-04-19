@@ -1,9 +1,9 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use Session;
 use App\Back\RoleModel;
-class BackRoleController extends Controller{
+class BackRoleController extends BackCommonController{
 	//角色首页
 	public function index(){
 		// $admin_id=session::get("admin_id");
