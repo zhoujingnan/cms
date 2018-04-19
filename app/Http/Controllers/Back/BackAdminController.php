@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use DB;
-class BackAdminController extends Controller{
+class BackAdminController extends BackCommonController{
 	public function index(){
 		$data = DB::select('select * from `admin` where admin_id!=1');
 		$data = json_decode(json_encode($data), true);

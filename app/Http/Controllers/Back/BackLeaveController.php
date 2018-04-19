@@ -1,8 +1,8 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\LeaveModel;
-class BackLeaveController extends Controller{
+class BackLeaveController extends BackCommonController{
 	//查看首页
 	public function index(){
 		$obj=new LeaveModel();

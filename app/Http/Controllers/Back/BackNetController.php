@@ -3,10 +3,10 @@
 网站管理
 */
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use DB;
 use Session;
-class BackNetController extends Controller{
+class BackNetController extends BackCommonController{
 	public function index(){
 		$admin_id = Session::get('admin_id');
 		$a_data = DB::select("select * from `admin` where admin_id=$admin_id");
