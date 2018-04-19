@@ -19,6 +19,22 @@ class BackAdminController extends Controller{
 			return redirect('backadmin/index');
 		}
 	}
+	public function sole(){
+		$name = $_GET['name'];
+		$res = DB::select("select * from `admin` where admin_name='$name'");
+		if($res){
+			return 0;
+		}else{
+			return 1;
+		}
+	}
+	public function del(){
+		$id = $_GET['id'];
+		$res = DB::delete("delete from `admin` where admin_id=$id");
+		if($res){
+			return 1;
+		}
+	}
 }
 
 
