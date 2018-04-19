@@ -39,7 +39,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：链接管理&nbsp;&nbsp;>&nbsp;&nbsp;添加友情链接</td>
+    <td width="99%" align="left" valign="top">您的位置：友情链接&nbsp;&nbsp;>&nbsp;&nbsp;添加友情链接</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -49,7 +49,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 	
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">连接类型：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">网站名称：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+			<input type="text" name="net_name" value="" class="text-word">
+        </td>
+    </tr>
+    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">链接类型：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
 			<select name="link_type" id="link_type">
 				<option value="" >&nbsp;&nbsp;请选择类型</option>
@@ -62,22 +68,16 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'" id="type">
         
     </tr>
-       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站标题：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <textarea name="net_name"></textarea>
-        </td>
-    </tr>
 	<tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">链接地址：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">网站url：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="net_url" value="" class="text-word">
         </td>
     </tr>
-       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">网站内容：</td>
+    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">描述：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <textarea name="net_desc"></textarea>   
+		<textarea name="net_desc"></textarea>
         </td>
     </tr>
     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
@@ -91,5 +91,37 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     </td>
     </tr>
 </table>
+<script>
+	$(function(){
+		$(document).on('change','#link_type',function(){
+			var t = $(this).val();
+			var str = "";
+			if(t=="1"){
+				str += '<td align="right" valign="middle" class="borderright borderbottom bggray">链接内容：</td>';
+				str += '<td align="left" valign="middle" class="borderright borderbottom main-for">';
+				str += '<input type="text" name="net_logo" value="" class="text-word">';
+				str += '</td>';
+			}else if(t=="2"){
+				str += '<td align="right" valign="middle" class="borderright borderbottom bggray">链接内容：</td>';
+				str += '<td align="left" valign="middle" class="borderright borderbottom main-for">';
+				str += '<input type="file" name="net_logo" value="" class="text-word">';
+				str += '</td>';
+			}
+			$("#type").empty();
+			$("#type").append(str);
+		})
+		
+		$(document).on('submit','#sub',function(){
+			var t = $("#link_type").val();
+			if(t==""){
+				$("#bc").html("<font color='red'>请选择类型</font>");
+				return false;
+			}else{
+				return true;				
+			}
+			
+		})
+	})
+</script>
 </body>
 </html>

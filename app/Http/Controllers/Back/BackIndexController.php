@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Back\BackCommonController;
 use DB;
+use Session;
 class BackIndexController extends BackCommonController{
 	public function getIndex(){ 
 		return view("back.index");
@@ -18,7 +19,11 @@ class BackIndexController extends BackCommonController{
 		}
 	}
 	public function getLeft(){
-		return view("back.left");
+		$id=session::get('admin_id');
+		$data = DB::select("select admin_name,role_name from admin as ad LEFT JOIN admin_role as ar on ad.admin_id=ar.admin_id LEFT JOIN role as r on ar.role_id=r.role_id where ad.admin_id=$id");
+		$data = json_decode(json_encode($data), true)[0];
+		//var_dump($data);die;
+		return view("back.left",array('arr'=>$data));
 	}
 	public function getSwich(){
 		return view("back.swich");

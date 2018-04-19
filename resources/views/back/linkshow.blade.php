@@ -33,20 +33,14 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：广告管理</td>
+    <td width="99%" align="left" valign="top">您的位置：友情链接</td>
   </tr>
   <tr>
     <td align="left" valign="top">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="search">
       <tr>
-       <td width="90%" align="left" valign="middle">
-           <form method="post" action="">
-           <span>网站名：</span>
-           <input type="text" name="" value="" class="text-word">
-           <input name="" type="button" value="查询" class="text-but">
-           </form>
-         </td>
-        <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backlink/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增</a></td>
+       
+        <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{url('backlink/add')}}" target="mainFrame" onFocus="this.blur()" class="add">新增链接</a></td>
       </tr>
   </table>
     </td>
@@ -56,34 +50,34 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
       <tr>
-        <th align="center" valign="middle" class="borderright"><button id="dels">批删</button></th>
         <th align="center" valign="middle" class="borderright">编号</th>
         <th align="center" valign="middle" class="borderright">链接类型</th>
         <th align="center" valign="middle" class="borderright">网站名</th>
         <th align="center" valign="middle" class="borderright">网站url</th>
+        <th align="center" valign="middle" class="borderright">网站logo</th>
         <th align="center" valign="middle" class="borderright">网站简介</th>
         <th align="center" valign="middle">操作</th>
       </tr>
        @foreach($arr as $key =>$val)
-          <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-            <td align="center" valign="middle" class="borderright borderbottom">
-              <input type="checkbox" class="box" value="{{$val['link_id']}}">
-            </td>
+          <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">           
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['link_id']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['link_type']}}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">
+			@if($val['link_type']==1) 文本 @else 图片 @endif
+			</td>
             <td align="center" valign="middle" class="borderright borderbottom">
              {{$val['net_name']}}
             </td>
             <td align="center" valign="middle" class="borderright borderbottom">
              {{$val['net_url']}}
             </td>
+			<td align="center" valign="middle" class="borderright borderbottom">
+             @if($val['link_type']==1) {{$val['net_logo']}} @else <img src="{{asset($val['net_logo'])}}" width="100"/> @endif
+            </td>
             <td align="center" valign="middle" class="borderright borderbottom">
              {{$val['net_desc']}}
             </td>
             <td align="center" valign="middle" class="borderbottom">
-              <a href="{{url('',['link_id'=>$val['link_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
-              <span class="gray">&nbsp;|&nbsp;</span>
-              <a href="{{url('backlink/del',['link_id'=>$val['link_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
+              <a href="javascript:void(0)" target="mainFrame" id="{{$val['link_id']}}" onFocus="this.blur()" class="del" class="add">删除</a>
             </td>
           </tr>
           @endforeach
@@ -93,5 +87,22 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   <tr>
   </tr>
 </table>
+<script>
+	$(function(){
+		//删除
+		$(document).on('click','.del',function(){
+			var obj = $(this);
+			var id = obj.attr('id');
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backlink/del')?>",
+				data:{id:id},
+				success:function(arr){
+					obj.parent().parent().remove();
+				}
+			})
+		})
+	})
+</script>
 </body>
 </html>

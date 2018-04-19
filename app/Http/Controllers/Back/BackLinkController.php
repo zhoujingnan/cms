@@ -1,9 +1,9 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\LinkModel;
 use DB;
-class BackLinkController extends Controller{
+class BackLinkController extends BackCommonController{
 	public function add(){
          return view("back.linkadd");
 	}
@@ -12,32 +12,36 @@ class BackLinkController extends Controller{
 		$net_name = isset($_POST['net_name'])?htmlspecialchars($_POST['net_name'],ENT_QUOTES ):"";
 	    $net_url = isset($_POST['net_url'])?htmlspecialchars($_POST['net_url'],ENT_QUOTES ):"";
 	    $net_desc = isset($_POST['net_desc'])?htmlspecialchars($_POST['net_desc'],ENT_QUOTES ):"";
+	    $net_logo = isset($_POST['net_logo'])?htmlspecialchars($_POST['net_logo'],ENT_QUOTES ):"";
 	    $img = $_FILES;
-	    // var_dump($img);die;
-	    $res = DB::insert('insert into `link`(link_type,net_name,net_url,net_desc) values(?,?,?,?)',["$link_type","$net_name","$net_url","$net_desc"]);
-	    if($res){
-	    	return redirect('backlink/show');
-	    }
+	    //var_dump($_POST);die;
+	    if(empty($img)){
+			$net_logo = $net_logo;
+		}else{
+			if($img['net_logo']['error']==0){
+				$postfix = substr($img['net_logo']['name'],strpos($img['net_logo']['name'],'.'));
+				$net_logo = "images/".time()."-".rand(1000,9999).$postfix;
+				move_uploaded_file($_FILES["net_logo"]["tmp_name"],  $net_logo);
+			}
+		}
+		$res = DB::insert('insert into `link`(net_name,link_type,net_url,net_desc,net_logo) values(?,?,?,?,?)',["$net_name","$link_type","$net_url","$net_desc","$net_logo"]);
+		//echo $res;die;
+		if($res){
+			return redirect('backlink/show');
+		}
 	}
    public function show(){
-   		$count = DB::table('link')->count();//总条数
-		$page = 1;//当前页数
-		$total = ceil($count/3);//总页数
-		$data = DB::select('select * from `link` limit 0,5');
+		$data = DB::select('select * from `link`');
 		$data = json_decode(json_encode($data), true);
 		//var_dump($data);
-		return view("back.linkshow",array('arr'=>$data,'page'=>$page,'count'=>$count,'totalpage'=>$total));
+		return view("back.linkshow",array('arr'=>$data));
 	}
-	public function del($link_id){
-        if(!$link_id){
-        	echo "删除失败！";die;
-        }
-        $obj=new LinkModel();
-        $res=$obj->del('link',"`link_id`=$link_id");
-        if($res){
-        	echo "删除成功！";
-        	return redirect('backlink/zhanshi');
-        }
+	public function del(){
+        $id = $_GET['id'];
+		$res = DB::delete("delete from `link` where link_id=$id");
+		if($res){
+			return 1;
+		}
 	}
    }
 

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Back\LoginModel;
 use Session;
+use DB;
 class BackLoginController extends Controller{
 	public function getIndex(){
 		return view('back.login');
@@ -17,16 +18,26 @@ class BackLoginController extends Controller{
 			$url=url("backlogin");
 			header("Refresh:2;url=$url");
 		}else{
-			$data=$this->getArray($arr);
-			$last_ip=$this->getIp();
-			$last_login_time=time();
-			$obj=new LoginModel();
-			$res=$obj->up($last_ip,$data[0]['admin_id'],$last_login_time);
-			if($res){
-				//存储session
-				Session::put('admin_id', $data[0]['admin_id']);
-				return redirect('backindex');				
-			}
+			$array = json_decode(json_encode($arr), true)[0];
+			$name = $array['admin_name'];
+			$admin_data = DB::select("select *from `admin` where admin_name='$name'");
+			$admin_data = json_decode(json_encode($admin_data), true)[0];
+			if($admin_data['status']==1){
+				$data=$this->getArray($arr);
+				$last_ip=$this->getIp();
+				$last_login_time=time();
+				$obj=new LoginModel();
+				$res=$obj->up($last_ip,$data[0]['admin_id'],$last_login_time);
+				if($res){
+					//存储session
+					Session::put('admin_id', $data[0]['admin_id']);
+					return redirect('backindex');				
+				}
+			}else{
+				echo "该用户已被禁用！跳转中....";
+				$url=url("backlogin");
+				header("Refresh:2;url=$url");
+			}			
 		}
 	}
 	public function getIp(){
@@ -58,6 +69,7 @@ class BackLoginController extends Controller{
 	    }
 	    return (object)$e;
 	}
+	
 }
 
  ?>

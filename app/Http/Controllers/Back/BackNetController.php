@@ -129,6 +129,13 @@ class BackNetController extends BackCommonController{
 			return redirect('backnet/index');
 		}		
 	}
+	//退出
+	public function quit(){
+		echo "已经退出";
+		Session::flush();
+		$url=url("backlogin");
+		header("Refresh:2;url=$url");die;
+	}
 
 }
 

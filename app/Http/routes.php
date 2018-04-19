@@ -31,6 +31,7 @@ Route::get('/backnet/netadd','Back\BackNetController@netadd');
 Route::get('/backnet/conadd','Back\BackNetController@conadd');
 Route::post('/backnet/netdo','Back\BackNetController@netdo');
 Route::post('/backnet/condo','Back\BackNetController@condo');
+Route::get('/backnet/quit','Back\BackNetController@quit');
 //广告管理
 Route::get('/backadvertising/add','Back\BackAdvertisingController@add');
 Route::post('/backadvertising/add_do','Back\BackAdvertisingController@add_do');

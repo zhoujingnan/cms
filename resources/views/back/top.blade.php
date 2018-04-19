@@ -17,7 +17,7 @@
       <tr>
         <td align="left" valign="bottom" id="header-name">婚恋网后台管理系统</td>
         <td align="right" valign="top" id="header-right">
-        	<a href="index.html" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
+        	<a href="{{url('backnet/quit')}}" target="topFrame" onFocus="this.blur()" class="admin-out">注销</a>
             <a href="{{url('backindex')}}" target="top" onFocus="this.blur()" class="admin-home">管理首页</a>
         	<a href="{{url('backindex')}}" target="_blank" onFocus="this.blur()" class="admin-index">网站首页</a>       	
             <span>
@@ -40,7 +40,7 @@
         <a href="{{url('backcolumn')}}" target="left" onFocus="this.blur()">栏目管理</a>
         <a href="{{url('/backadvertising/ad_list')}}" target="left" onFocus="this.blur()">广告管理</a>
         <a href="{{url('/backleave/index')}}" target="left" onFocus="this.blur()">留言管理</a>
-        <a href="{{url('/backlink/index')}}" target="left" onFocus="this.blur()">友情链接</a>
+        <a href="{{url('/backlink/show')}}" target="left" onFocus="this.blur()">友情链接</a>
         <!-- <a href="{{url('backindex')}}" target="left" onFocus="this.blur()">站点管理</a> -->
         </td>
       </tr>

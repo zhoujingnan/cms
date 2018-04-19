@@ -27,7 +27,7 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="main">
   <tr>
     <td colspan="2" align="left" valign="top">
-    <span class="time"><strong>{{$admin_data['h']}}！{{$admin_data['admin_name']}}</strong><u>[超级管理员]</u></span>
+    <span class="time"><strong>{{$admin_data['h']}}！{{$admin_data['admin_name']}}</strong></span>
     <div class="top"><span class="left">您的登灵时间：{{date("Y-m-d H:i",$admin_data['last_login_time'])}}   登录IP：{{$admin_data['last_ip']}} &nbsp;&nbsp;&nbsp;&nbsp;</span><a href="{{url('backadmin/uppwd',['id'=>$admin_data['admin_id']])}}" target="mainFrame" onFocus="this.blur()">更改密码</a></div>
     <div class="sec">这是您第<span class="num">{{$admin_data['login_num']}}</span>次,登录！</div>
     </td>
