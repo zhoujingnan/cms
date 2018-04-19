@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use DB;
 class BackAdminController extends Controller{
 	public function index(){
-		$data = DB::select('select * from `admin`');
+		$data = DB::select('select * from `admin` where admin_id!=1');
 		$data = json_decode(json_encode($data), true);
 		return view('back.admin_list',['arr'=>$data]);
 	}
@@ -33,6 +33,50 @@ class BackAdminController extends Controller{
 		$res = DB::delete("delete from `admin` where admin_id=$id");
 		if($res){
 			return 1;
+		}else{
+			return 0;
+		}
+	}
+	//添加角色
+	public function roleadd($id){
+		$a_data = DB::select("select * from `admin` where admin_id=$id");
+		$admin_name = json_decode(json_encode($a_data), true)[0]['admin_name'];
+		$r_data = DB::select("select * from `role`");
+		$r_data = json_decode(json_encode($r_data), true);
+		$p_data = DB::select("select * from `admin_role` where admin_id=$id");
+		$p_data = json_decode(json_encode($p_data), true);
+		//var_dump($r_data);
+		//var_dump($p_data);
+		foreach($r_data as $key => $val){
+			foreach($p_data as $k => $v){
+				if($val['role_id']==$v['role_id']){
+					$r_data[$key]['check'] = "checked";
+				}
+			}
+		}
+		//var_dump($r_data);die;
+		return view('back.r_add',['admin_name'=>$admin_name,'data'=>$r_data,'id'=>$id]);
+	}
+	public function r_do(){
+		$id = $_POST['id'];
+		$r_id = $_POST['role'];
+		DB::delete("delete from `admin_role` where admin_id=$id");
+		foreach($r_id as $k => $v){
+			$res = DB::insert('insert into `admin_role`(admin_id,role_id) values(?,?)',["$id","$v"]);
+		}
+		if($res){
+			return redirect('backadmin/index');
+		}
+	}
+	//修改状态
+	public function upstatus(){
+		$id = $_GET['id'];
+		$status = $_GET['status'];
+		$res = DB::update("update `admin` set `status`=$status where admin_id=$id");
+		if($res){
+			return 1;
+		}else{
+			return 0;
 		}
 	}
 }

@@ -59,13 +59,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 	 </thead>
 	 <tbody id="to">
       @foreach($arr as $key =>$val)
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'" id="{{$val['admin_id']}}">
         <td align="center" valign="middle" class="borderright borderbottom">{{$val['admin_id']}}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{$val['admin_name']}}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{$val['admin_pwd']}}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{$val['status']}}</td>
+        <td align="center" valign="middle" class="status" tid="{{$val['status']}}" class="borderright borderbottom">@if($val['status']==1) 启用 @else 禁用 @endif</td>
         <td align="center" valign="middle" class="borderbottom" id="{{$val['admin_id']}}" >
-			<a href="{{url('backadvertising/ad_up',['id'=>$val['admin_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
+			<a href="{{url('backadmin/roleadd',['id'=>$val['admin_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">添加角色</a>
 			<span class="gray">&nbsp;|&nbsp;</span>
 			<a href="javascript:void(0)" target="mainFrame" onFocus="this.blur()" class="del" class="add">删除</a>
 		</td>
@@ -82,7 +82,44 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </body>
 <script>
 	$(function(){
-		
+		$(document).on('click','.del',function(){
+			var obj = $(this);
+			var id = obj.parent().attr('id');
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backadmin/del')?>",
+				data:{id:id},
+				success:function(arr){
+					obj.parent().parent().remove();
+				}
+			})
+		})
+		$(document).on('click','.status',function(){
+			var status = $(this).attr('tid');
+			var id = $(this).parent().attr('id');
+			var obj = $(this);
+			if(status==1){
+				status = 0;
+			}else{
+				status =1;
+			}
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backadmin/upstatus')?>",
+				data:{id:id,status:status},
+				success:function(arr){
+					if(arr==1){
+						if(status==0){
+							obj.attr('tid',0)
+							obj.html("禁用");
+						}else{
+							obj.attr('tid',1)
+							obj.html("启用");
+						}
+					}
+				}
+			})
+		})
 	})
 </script>
 </html>

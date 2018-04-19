@@ -5,6 +5,9 @@ class BackPowerController extends Controller{
 	public function index(){
 		echo "权限管理";
 	}
+	public function add(){
+		
+	}
 }
 
 

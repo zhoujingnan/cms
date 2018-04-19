@@ -96,6 +96,9 @@ Route::get("/backadmin/index","Back\BackAdminController@index");
 Route::get("/backadmin/add","Back\BackAdminController@add");
 Route::get("/backadmin/del","Back\BackAdminController@del");
 Route::get("/backadmin/sole","Back\BackAdminController@sole");
+Route::get("/backadmin/roleadd/{id}","Back\BackAdminController@roleadd");
+Route::get("/backadmin/upstatus","Back\BackAdminController@upstatus");
+Route::post("/backadmin/r_do","Back\BackAdminController@r_do");
 Route::post("/backadmin/add_do","Back\BackAdminController@add_do");
 //角色管理
 Route::get("/backrole/index","Back\BackRoleController@index");
@@ -108,4 +111,5 @@ Route::get('/backrole/del/{active_id}','Back\BackRoleController@del');
 Route::get('/backrole/pidel','Back\BackRoleController@pidel');
 //权限管理
 Route::get("/backpower/index","Back\BackPowerController@index");
+Route::get("/backpower/add","Back\BackPowerController@add");
 
