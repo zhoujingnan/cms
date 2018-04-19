@@ -37,6 +37,35 @@ class BackAdminController extends BackCommonController{
 			return 0;
 		}
 	}
+	//修改密码
+	public function uppwd($id){
+		$a_data = DB::select("select * from `admin` where admin_id=$id");
+		$data = json_decode(json_encode($a_data), true)[0];
+		return view('back.uppwd',['data'=>$data]);
+	}
+	//验证密码
+	public function is_pwd(){
+		$pwd = $_GET['pwd'];
+		$id = $_GET['id'];
+		$a_data = DB::select("select * from `admin` where admin_id=$id");
+		$data = json_decode(json_encode($a_data), true)[0];
+		if(md5($pwd)==$data['admin_pwd']){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+	public function uppwd_do(){
+		$pwd = $_GET['pwd'];
+		$pwd = md5($pwd);
+		$id = $_GET['id'];
+		$res = DB::update("update `admin` set `admin_pwd`='$pwd' where admin_id=$id");
+		if($res){
+			return 1;
+		}else{
+			return 0;
+		}
+	}
 	//添加角色
 	public function roleadd($id){
 		$a_data = DB::select("select * from `admin` where admin_id=$id");
