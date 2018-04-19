@@ -74,7 +74,30 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </table>
 <script>
 	$(function(){
-		alert(1)
+		var flog = 0;
+		$(document).on('blur','#admin_name',function(){
+			var name = $(this).val();
+			$.ajax({
+				type:'get',
+				url:"<?php echo url('backadmin/sole')?>",
+				data:{name:name},
+				success:function(arr){
+					if(arr==0){
+						flog=0;
+						$("#bc").html("用户名存在");
+					}else{						
+						flog=1;
+					}
+				}
+			})
+		})
+		$(document).on('submit','#sub',function(){
+			if(flog==1){
+				return true
+			}else{
+				return false 
+			}
+		})
 	})
 </script>
 </body>
