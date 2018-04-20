@@ -1,9 +1,13 @@
 <?php 	
 namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
+use App\Back\CommonModel;
 class HomeMemberController extends Controller{
 	public function index(){
-		return view("home.member_list");
+		$obj=new CommonModel();
+		//企业简介	
+		$net_data=json_decode(json_encode($obj->get('contact',"1=1")),true);		
+		return view("home.member_list",['net_data'=>$net_data]);
 	}
 }
 

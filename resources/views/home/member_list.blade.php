@@ -10,14 +10,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -45,35 +45,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html">Obdurate <span>We are professional in our service</span></a>
+						<a class="navbar-brand" href="index.html">勇敢说爱，快乐脱单<span>我们用心服务专业</span></a>
 					</div>
 				</div>
 
 
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li class="active"><a href="projects.html">Projects</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
+						<li class="active"><a href="#">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
+						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li><a href="{{url('homestory/index')}}">love story</a></li>
+						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 
 				<!-- search -->
 				<div class="head-right">
 					<div id="sb-search" class="sb-search">
-						<form>
+						<!-- <form>
 							<input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
 							<input class="sb-search-submit" type="submit" value="">
 							<span class="sb-icon-search"> </span>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- //search -->
 					<!--search-scripts-->
-						<script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
+						<script src="{{asset('js/classie.js')}}"></script>
+						<script src="{{asset('js/uisearch.js')}}"></script>
 							<script>
 								new UISearch( document.getElementById( 'sb-search' ) );
 							</script>
@@ -86,9 +87,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner-contact">
 		<div class="container">
 			<div class="banner-contact-info">
-				<h3>To take a trivial example, which of us ever undertakes</h3>
-				<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-					voluptates repudiandae sint et molestiae non recusandae.</p>
+				<h3>认真科学谈恋爱，幸福长久过一生</h3>
+				<p>但在某些情况下其职责的需要，经常会出现的乐趣已经被否定，或避免乐趣和烦恼的一些事情还没有被接受。</p>
 			</div>
 		</div>
 	</div>
@@ -106,11 +106,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
 					<div class="footer-logo">
-						<a href="index.html">Obdurate <span>We are professional in our service</span></a>
+						<a href="index.html">Charm <span>我们在我们的专业服务</span></a>
 					</div>
 				</div>
 				<div class="col-md-4 footer-grid">
-					<h4>Call Us <span>+0809 657 890</span></h4>
+					<h4>Call Us <span>{{$net_data[0]['net_phone']}}</span></h4>
 					<p>My Company,875 jewel Road <span>8907 Ukrain.</span></p>
 					<ul class="social-icons">
 						<li><a href="#" class="p"> </a></li>
@@ -121,11 +121,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-4 footer-grid">
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="services.html">Services</a></li>
-						<li><a href="projects.html">Projects</a></li>
-						<li><a href="contact.html">Contact Us</a></li>
+						<li class="active"><a href="#">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
+						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li><a href="{{url('homestory/index')}}">love story</a></li>
+						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -139,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src="{{asset('js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
 <!-- here stars scrolling icon -->
 	<script type="text/javascript">
