@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>About</title>
+<title>member</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Obdurate Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-//地图
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nIWaZizfhQ2gqsdAyVh6NcX1LuErcLBV"></script>
-	
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -32,6 +29,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+<style>
+	.div_img{
+		background: white;
+		width:250px;
+		height:300px;
+		float: left;
+		margin-left: 33px;
+		margin-top: 10px;
+	}
+	.img:hover{
+		transform: scale(1.2);
+		webkit-transition: all 1.5s ease-in-out;
+		o-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		moz-transform: scale(1.2);
+		webkit-transform: scale(1.2);
+		moz-transition: all 1.5s ease-in-out;
+		ms-transition: all 1.5s ease-in-out;
+		o-transition: all 1.5s ease-in-out;
+		transition: all 1.5s ease-in-out;
+	}
+
+</style>
 </head>
 
 <body>
@@ -42,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>		
 		<div class="container">
 			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
+
 				<div class="navbar-header">
 				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
@@ -51,17 +71,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html">勇敢说爱，快乐脱单 <span>我们在我们的服务专业</span></a>
+						<a class="navbar-brand" href="index.html">勇敢说爱，快乐脱单<span>我们用心服务专业</span></a>
 					</div>
 				</div>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
+
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
-						<li class="active"><a href="#">关于</a></li>
+						<li><a href="{{url('homeindex/index')}}">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
 						<li><a href="{{url('/homemember/index')}}">会员</a></li>
-						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li class="active"><a href="#">服务</a></li>
 						<li><a href="{{url('homestory/index')}}">love story</a></li>
 						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
@@ -79,8 +99,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<!-- //search -->
 					<!--search-scripts-->
-						<script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
+						<script src="{{asset('js/classie.js')}}"></script>
+						<script src="{{asset('js/uisearch.js')}}"></script>
 							<script>
 								new UISearch( document.getElementById( 'sb-search' ) );
 							</script>
@@ -99,29 +119,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 <!-- //banner -->
-
-	<div>
-		<p>企业地址：{{$con_data['net_address']}}</p>
-		<div id="l-map"></div>
+<!--typography-page -->
+	<div class="typo">
+		<div class="container">
 		
+			<p style="font-size:18px;margin-top:10px;">
+				<img src="{{asset($a_data['active_img'])}}" width="500" />
+			</p>
+			<p style="font-size:18px;margin-top:30px;">
+				活动地点：{{$a_data['active_address']}}
+			</p>
+			<p style="font-size:18px;margin-top:10px;">
+				开始时间：{{date("Y-m-d H:i:s",$a_data['active_start_time'])}}
+			</p>
+			<p style="font-size:18px;margin-top:10px;">
+				结束时间：{{date("Y-m-d H:i:s",$a_data['active_end_time'])}}
+			</p>
+			<p style="font-size:18px;margin-top:10px;">
+				{{$a_data['status']}}
+			</p>
+		</div>
 	</div>
-
-<!-- team -->
-	<div class="team">
-		
-	</div>
-<!-- //team -->
+<!-- //typography-page -->
 <!-- footer -->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
 					<div class="footer-logo">
-						<a href="index.html">Obdurate <span>We are professional in our service</span></a>
+						<a href="index.html">Charm <span>我们在我们的专业服务</span></a>
 					</div>
 				</div>
 				<div class="col-md-4 footer-grid">
-					<h4>Call Us <span>+0809 657 890</span></h4>
+					<h4>Call Us <span>{{$net_data[0]['net_phone']}}</span></h4>
 					<p>My Company,875 jewel Road <span>8907 Ukrain.</span></p>
 					<ul class="social-icons">
 						<li><a href="#" class="p"> </a></li>
@@ -132,10 +162,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-4 footer-grid">
 					<ul>
-						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
-						<li class="active"><a href="#">关于</a></li>
+						<li><a href="{{url('homeindex/index')}}">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
 						<li><a href="{{url('/homemember/index')}}">会员</a></li>
-						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li class="active"><a href="#">服务</a></li>
 						<li><a href="{{url('homestory/index')}}">love story</a></li>
 						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
@@ -151,23 +181,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src="{{asset('js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
 <!-- here stars scrolling icon -->
-<script type="text/javascript">
-	// 百度地图API功能
-	var map = new BMap.Map("allmap");    // 创建Map实例
-	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-	//添加地图类型控件
-	map.addControl(new BMap.MapTypeControl({
-		mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));	  
-	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-</script>
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			/*

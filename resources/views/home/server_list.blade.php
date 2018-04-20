@@ -122,7 +122,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--typography-page -->
 	<div class="typo">
 		<div class="container">
-			1312312
+		<h3 style="color:pink;margin-bottom:30px;"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>组织活动</h3>
+			@foreach($a_data as $key => $val)
+			<div style="width:300px;height:300px;float:left;margin-left:20px;">
+				<a href="{{url('homeserver/show',['id'=>$val['active_id']])}}">
+					<img src="{{asset($val['active_img'])}}" width="300" height="200" />
+				</a>
+				<p>{{$val['active_title']}}</p>
+			</div>
+			@endforeach
+		</div>
+		<div class="container">
+		<h3 style="color:pink;margin-bottom:30px;"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>在线课堂</h3>
+			@foreach($c_data as $key => $val)
+			<div style="width:300px;height:300px;float:left;margin-left:20px;">
+				<video src="{{asset($val['class_url'])}}" controls="controla" width="300"></video>
+				<p>{{$val['class_title']}}</p>
+			</div>
+			@endforeach
 		</div>
 	</div>
 <!-- //typography-page -->

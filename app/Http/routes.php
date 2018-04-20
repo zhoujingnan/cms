@@ -139,5 +139,6 @@ Route::get("/homemember/index","Home\HomeMemberController@index");
 Route::get("/homecontact/index","Home\HomeContactController@index");
 //服务
 Route::get("/homeserver/index","Home\HomeServerController@index");
+Route::get("/homeserver/show/{id}","Home\HomeServerController@show");
 //关于我们
 Route::get("/homeabout/index","Home\HomeAboutController@index");
