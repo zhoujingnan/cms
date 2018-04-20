@@ -137,7 +137,9 @@ Route::get("/homestory/index","Home\HomeStoryController@index");
 Route::get("/homemember/index","Home\HomeMemberController@index");
 //联系我们
 Route::get("/homecontact/index","Home\HomeContactController@index");
+Route::get("/homecontact/redis","Home\HomeContactController@redis");
 //服务
 Route::get("/homeserver/index","Home\HomeServerController@index");
 //关于我们
 Route::get("/homeabout/index","Home\HomeAboutController@index");
+
