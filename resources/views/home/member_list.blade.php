@@ -29,6 +29,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- start-smoth-scrolling -->
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
+<style>
+	.div_img{
+		background: white;
+		width:250px;
+		height:300px;
+		float: left;
+		margin-left: 33px;
+		margin-top: 10px;
+	}
+	.img:hover{
+		transform: scale(1.2);
+		webkit-transition: all 1.5s ease-in-out;
+		o-transform: scale(1.2);
+		-ms-transform: scale(1.2);
+		moz-transform: scale(1.2);
+		webkit-transform: scale(1.2);
+		moz-transition: all 1.5s ease-in-out;
+		ms-transition: all 1.5s ease-in-out;
+		o-transition: all 1.5s ease-in-out;
+		transition: all 1.5s ease-in-out;
+	}
+
+</style>
 </head>
 
 <body>
@@ -99,7 +122,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--typography-page -->
 	<div class="typo">
 		<div class="container">
-			/////////////////////////////
+			@foreach($member_data as $key =>$val)
+			<div class="div_img">
+				<a href="tencent://message/?uin=768100410Site=">   
+					<img class="img" style="border-radius:9px" src="{{asset($val['member_img'])}}" alt="" width="250" height="220px">
+				</a>
+				<span style="font-size: 20px">
+					{{$val['member_name']}}
+					&nbsp;
+					{{$val['member_age']}}岁
+					<span style="font-size: 14px;color: #ccc;padding-left:7px;">
+						期望一年内结婚
+					</span>
+				</span>
+				<br>
+				<span style="line-height: 20px;">
+					{{$val['member_address']}}
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					{{$val['member_money']}}
+				</span>
+			</div>
+			@endforeach
 		</div>
 	</div>
 <!-- //typography-page -->
