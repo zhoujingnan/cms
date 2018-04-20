@@ -174,19 +174,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 banner-bottom-grid-right">
 					<div class="col-md-6 banner-bottom-grid-left1">
 						<div class="banner-bottom-grd">
-							<a href="{{asset('images/1.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
-								<img src="{{asset('images/1.jpg')}}" alt=" " class="img-responsive" />
+							<a href="{{asset('images/73.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
+								<img src="{{asset('images/73.jpg')}}" alt=" " class="img-responsive" />
 								<div class="textbox">
-									<h4>Jan Smith</h4>
+									<h4>真情红娘</h4>
 									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
 								</div>
 							</a>
 						</div>
 						<div class="banner-bottom-grd">
-							<a href="{{asset('images/2.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
-								<img src="{{asset('images/2.jpg')}}" alt=" " class="img-responsive" />
+							<a href="{{asset('images/71.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
+								<img src="{{asset('images/71.jpg')}}" alt=" " class="img-responsive" />
 								<div class="textbox">
-									<h4>Joseph</h4>
+									<h4>精准推荐</h4>
 									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
 								</div>
 							</a>
@@ -194,19 +194,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-6 banner-bottom-grid-left1 grid2">
 						<div class="banner-bottom-grd">
-							<a href="{{asset('images/3.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
-								<img src="{{asset('images/3.jpg')}}" alt=" " class="img-responsive" />
+							<a href="{{asset('images/72.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
+								<img src="{{asset('images/72.jpg')}}" alt=" " class="img-responsive" />
 								<div class="textbox">
-									<h4>Peterson</h4>
+									<h4>线下门店</h4>
 									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
 								</div>
 							</a>
 						</div>
 						<div class="banner-bottom-grd">
-							<a href="{{asset('images/4.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
-								<img src="{{asset('images/4.jpg')}}" alt=" " class="img-responsive" />
+							<a href="{{asset('images/74.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
+								<img src="{{asset('images/74.jpg')}}" alt=" " class="img-responsive" />
 								<div class="textbox">
-									<h4>Micheal Buddy</h4>
+									<h4>专业服务</h4>
 									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
 								</div>
 							</a>
