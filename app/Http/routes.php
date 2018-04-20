@@ -131,3 +131,13 @@ Route::get('/backpower/pidel','Back\BackPowerController@pidel');
 Route::get('/backpower/del/{active_id}','Back\BackPowerController@del');
 //前台首页
 Route::get("/homeindex/index","Home\HomeIndexController@index");
+//故事
+Route::get("/homestory/index","Home\HomeStoryController@index");
+//会员
+Route::get("/homemember/index","Home\HomeMemberController@index");
+//联系我们
+Route::get("/homecontact/index","Home\HomeContactController@index");
+//服务
+Route::get("/homeserver/index","Home\HomeServerController@index");
+//关于我们
+Route::get("/homeabout/index","Home\HomeAboutController@index");

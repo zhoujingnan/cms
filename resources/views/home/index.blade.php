@@ -62,22 +62,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">首页</a></li>
-						<li><a href="about.html">关于</a></li>
-						<li><a href="services.html">服务</a></li>
-						<li><a href="projects.html">love story</a></li>
-						<li><a href="contact.html">联系我们</a></li>
+						<li class="active"><a href="#">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
+						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li><a href="{{url('homestory/index')}}">love story</a></li>
+						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 
 				<!-- search -->
 				<div class="head-right">
 					<div id="sb-search" class="sb-search">
-						<form>
+						<!-- <form>
 							<input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
 							<input class="sb-search-submit" type="submit" value="">
 							<span class="sb-icon-search"> </span>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- //search -->
@@ -172,17 +173,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="col-md-6 banner-bottom-grid-right">
+					@foreach($server_data as $key => $val)
 					<div class="col-md-6 banner-bottom-grid-left1">
+						@foreach($val as $k => $v)
 						<div class="banner-bottom-grd">
-							<a href="{{asset('images/73.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
-								<img src="{{asset('images/73.jpg')}}" alt=" " class="img-responsive" />
+							<a href="{{asset($v['column_url'])}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
+								<img src="{{asset($v['column_url'])}}" alt=" " class="img-responsive" />
 								<div class="textbox">
-									<h4>真情红娘</h4>
-									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
+									<h4>{{$v['column_name']}}</h4>
+									<p>{{$v['column_desc']}}</p>
 								</div>
 							</a>
 						</div>
-						<div class="banner-bottom-grd">
+						@endforeach
+						<!-- <div class="banner-bottom-grd">
 							<a href="{{asset('images/71.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
 								<img src="{{asset('images/71.jpg')}}" alt=" " class="img-responsive" />
 								<div class="textbox">
@@ -190,9 +194,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
 								</div>
 							</a>
-						</div>
+						</div> -->
 					</div>
-					<div class="col-md-6 banner-bottom-grid-left1 grid2">
+					@endforeach
+					<!-- <div class="col-md-6 banner-bottom-grid-left1 grid2">
 						<div class="banner-bottom-grd">
 							<a href="{{asset('images/72.jpg')}}" rel="title" class="b-link-stripe b-animate-go  thickbox">
 								<img src="{{asset('images/72.jpg')}}" alt=" " class="img-responsive" />
@@ -211,7 +216,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</a>
 						</div>
-					</div>
+					</div> -->
 					<div class="clearfix"> </div>
 				</div>
 				<div class="clearfix"> </div>
@@ -223,71 +228,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="wmuSlider example1">
 			    <div class="wmuSliderWrapper">
+			    	@foreach($story_data as $key => $val)
 					<article style="position: absolute; width: 100%; opacity: 0;">
 						<div class="banner-wrap">
 							<div class="banner1-info">
 								<div class="col-md-7 banner1-info-left">
-									<h2>幸福需要等待</h2>
-									<p>现在的我特激动！！我向大家宣布我要结婚了！！！希望通过真情在线分享我的喜悦，真的很感谢真情在线，谢谢我的爱情顾问，让我结识了现在的女友，即将成为我的新娘。
-
-我注册了真情在线。我性格比较内向，希望真的可以在真情在线找到自己的幸福。在爱情顾问的协助下，我办理了VIP会员。我对另一半的要求其实很简单，就是想找一个真心过日子的，有工作就行，有没有住房都没关系，因为我可以给到她这样安定的生活。就这样爱情顾问根据我的要求跟我匹配了一些会员。其中就有我的爱人。
-
-因为内向，在感情上我特别不善于表达。真情顾问在中间帮到了很大的忙，先是电话短信联系，又QQ联系，感觉彼此都很真诚，所以顾问精心安排预约见面的时间。就这样很顺其自然的我们见面了。我们双方的感觉印象都非常好，所以在前期的沟通和见面后，我们确定了恋爱关系。真情顾问给了我很多指导，包括见面、牵手、情感指导，真的很专业。真情顾问在我们中间真的起到水到渠成的帮助，现在我们见了双方的家长，准备要在春天结婚了。好开心，好激动啊~！
-
-谢谢真情在线，谢谢我的爱情顾问白老师。我快要结婚了，跟大家分享一下，分享我们的幸福~！也祝大家都幸福！~</p>
+									<h2>{{$val['story_title']}}</h2>
+									<p>{{$val['story_desc']}}</p>
 									<!-- <h4>Arun Duttha <span></span></h4> -->
 								</div>
 								<div class="col-md-5 banner1-info-right">
-									<img src="{{asset('images/2.png')}}" alt=" " class="img-responsive" />
+									<img width="300" height="250" src="{{asset($val['img'])}}" alt=" " class="img-responsive" />
 								</div>
 								<div class="clearfix"> </div>
 							</div>
 						</div>
 					</article>
-					<article style="position: absolute; width: 100%; opacity: 0;">
-						<div class="banner-wrap">
-							<div class="banner1-info">
-								<div class="col-md-7 banner1-info-left">
-									<h2>冬天里的温暖</h2>
-									<p>2016年6月18日，他带着我终于去民政局领了证，我们顺利完成了从恋爱到婚姻的过度。从过程到结果，我始终保持着一份感恩的心态。
-
-我和他是在15年年初的时候在真情在线认识的。我的爱情顾问倪琳老师告诉我他是一个非常厚道诚实的人，正适合我这样比较任性的性格。见面之后果然如此，他虽然话不多，但能看出来是一个让人踏实放心的人。在交流中他说，如果男人不能包容女人的话，那是讨不到媳妇的。这句话竟然让我笑出了声。
-
-在后来的相处中，我们之间也出现过一些小问题，幸亏有倪老师从中协调沟通，才使得我们之间的了解越来越多，感情也逐渐加深，更加牢靠。爱情不是永远期待最好的，而是遇见最合适的那个人。
-
-很幸运的是我遇见了，而且他早已告诉我说我就是他想要相伴到老的那个人。经过一年多的爱情短跑，我们终于进入到了婚姻的殿堂。感谢真情在线！感谢倪琳老师！</p>
-									<!-- <h4>Arun Duttha <span>总工程师</span></h4> -->
-								</div>
-								<div class="col-md-5 banner1-info-right">
-									<img src="{{asset('images/4.png')}}" alt=" " class="img-responsive" />
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-					</article>
-					<article style="position: absolute; width: 100%; opacity: 0;">
-						<div class="banner-wrap">
-							<div class="banner1-info">
-								<div class="col-md-7 banner1-info-left">
-									<h2>幸福的由来</h2>
-									<p>还记得14年国庆刚过，我就来到了真情在线。起初也接到过爱情顾问洪蕾老师打来的电话，但实在是因为工作忙，再加上自己当时状态也不是很好，就没有把这事儿放在心上。国庆期间在家待着，家人对我的事情也是各种询问。也许是自己想通了吧，为了他们，为了自己，是时候积极一些了。
-
-成为会员之后我的爱情顾问洪蕾老师给了我很多帮助，我有什么问题都会愿意和她讲，包括生活上的，情感上的，就像一个老朋友一样。后来，洪老师依据我的需求帮我做了精确匹配，还夸我说像我这么好的女孩子她一定会帮我找到一个如意郎君的。真是非常感谢她的鼓励。
-
-他是洪蕾老师帮我约见的第二个男孩子，看起来高高壮壮的，蛮有安全感。第一次见面，我也能感受到他对我感觉不错。后来经过洪蕾老师在中间的沟通，我们逐渐开始了自己的交流。在相处过程中，我和他相互之间了解的也越来越多，自然而然地就确立了恋爱关系。在这期间，洪老师也给了我们许多指点和帮助。
-
-2015年的冬至，我们经过一年多的相处，终于在这天来到了民政局。他说虽然这是一年当中最冷、白天最短的一天，但他愿意一辈子在任何时候都陪伴着我，愿意做我的阳光和雨露
-
-冬至这天，我却感觉很温暖。感谢真情在线，感谢洪蕾老师！</p>
-									<!-- <h4>Arun Duttha <span>总工程师</span></h4> -->
-								</div>
-								<div class="col-md-5 banner1-info-right">
-									<img src="{{asset('images/5.png')}}" alt=" " class="img-responsive" />
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-					</article>
+					@endforeach
 				</div>
 			</div>
 					<script src="{{asset('js/jquery.wmuSlider.js')}}"></script>
@@ -302,22 +259,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="banner1-bottom-grids">
 				<div class="col-md-2 banner1-bottom-grids1">
-					<h3><span class="glyphicon glyphicon-user" aria-hidden="true"></span>以舞会友-大型相亲舞会</h3>
+					<h3 title="{{$active_data[0]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					{{$active_data[0]['active_title']}}
+					</h3>
 				</div>
 				<div class="col-md-2 banner1-bottom-grids1 banner1-bottom-grids1-color">
-					<h3><span class="glyphicon glyphicon-star" aria-hidden="true"></span>蓝色缘分-主题相亲酒会</h3>
+					<h3 title="{{$active_data[1]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$active_data[1]['active_title']}}</h3>
 				</div>
 				<div class="col-md-2 banner1-bottom-grids1 banner1-bottom-grids1-color1">
-					<h3><span class="glyphicon glyphicon-signal" aria-hidden="true"></span>不期而遇-名企相亲联谊会</h3>
+					<h3 title="{{$active_data[2]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$active_data[2]['active_title']}}</h3>
 				</div>
 				<div class="col-md-2 banner1-bottom-grids1 banner1-bottom-grids1-color2">
-					<h3><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>爱在七夕-情人节主题专场</h3>
+					<h3 title="{{$active_data[3]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$active_data[3]['active_title']}}</h3>
 				</div>
 				<div class="col-md-2 banner1-bottom-grids1 banner1-bottom-grids1-color3">
-					<h3><span class="glyphicon glyphicon-tint" aria-hidden="true"></span>一见钟情-会员专场一对一</h3>
+					<h3 title="{{$active_data[4]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$active_data[4]['active_title']}}</h3>
 				</div>
 				<div class="col-md-2 banner1-bottom-grids1 banner1-bottom-grids1-color4">
-					<h3><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>缘来有你-生日专场</h3>
+					<h3 title="{{$active_data[5]['active_id']}}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>{{$active_data[5]['active_title']}}</h3>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -387,11 +346,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
 					<div class="footer-logo">
-						<a href="index.html">Obdurate <span>我们在我们的专业服务</span></a>
+						<a href="index.html">Charm <span>我们在我们的专业服务</span></a>
 					</div>
 				</div>
 				<div class="col-md-4 footer-grid">
-					<h4>Call Us <span>+0809 657 890</span></h4>
+					<h4>Call Us <span>{{$net_data[0]['net_phone']}}</span></h4>
 					<p>My Company,875 jewel Road <span>8907 Ukrain.</span></p>
 					<ul class="social-icons">
 						<li><a href="#" class="p"> </a></li>
@@ -402,11 +361,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-4 footer-grid">
 					<ul>
-						<li><a href="index.html">首页</a></li>
-						<li><a href="about.html">关于</a></li>
-						<li><a href="services.html">服务</a></li>
-						<li><a href="projects.html">项目</a></li>
-						<li><a href="contact.html">联系我们</a></li>
+						<li class="active"><a href="#">首页</a></li>
+						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
+						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li><a href="{{url('homestory/index')}}">love story</a></li>
+						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
