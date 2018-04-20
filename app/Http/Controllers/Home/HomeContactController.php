@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Back\CommonModel;
-use App\libs\phpmailer;
+use App\libs\PHPMailer;
 class HomeContactController extends Controller{
 	public function index(){
 		$obj=new CommonModel();
