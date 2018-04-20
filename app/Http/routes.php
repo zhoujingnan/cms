@@ -129,3 +129,5 @@ Route::get("/backpower/up/{role_id}","Back\BackPowerController@up");
 Route::post("/backpower/updo","Back\BackPowerController@updo");
 Route::get('/backpower/pidel','Back\BackPowerController@pidel');
 Route::get('/backpower/del/{active_id}','Back\BackPowerController@del');
+//前台首页
+Route::get("/homeindex/index","Home\HomeIndexController@index");
