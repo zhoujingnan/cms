@@ -34,6 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header-nav -->
 	<div class="header-nav">
+		<div style="margin-left:103px;float: left">
+			<img src="{{asset('images/logo.png')}}" alt="" width="150px">
+		</div>		
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
@@ -45,15 +48,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html">Charm <span>我们在我们的服务专业</span></a>
+						<a class="navbar-brand" href="index.html">勇敢说爱，快乐脱单 <span>我们在我们的服务专业</span></a>
 					</div>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="{{url('/homeindex/index')}}">首页</a></li>
-						<li><a href="#">关于</a></li>
+						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
+						<li class="active"><a href="#">关于</a></li>
 						<li><a href="{{url('/homemember/index')}}">会员</a></li>
 						<li><a href="{{url('homeserver/index')}}">服务</a></li>
 						<li><a href="{{url('homestory/index')}}">love story</a></li>
@@ -64,11 +67,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- search -->
 				<div class="head-right">
 					<div id="sb-search" class="sb-search">
-						<form>
+						<!-- <form>
 							<input class="sb-search-input" placeholder="Search" type="search" name="search" id="search">
 							<input class="sb-search-submit" type="submit" value="">
 							<span class="sb-icon-search"> </span>
-						</form>
+						</form> -->
 					</div>
 				</div>
 				<!-- //search -->
@@ -87,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner-contact">
 		<div class="container">
 			<div class="banner-contact-info">
-				<h3>举一个微不足道的例子，我们从事过哪些工作</h3>
+				<h3>认真科学谈恋爱，幸福长久过一生</h3>
 				<p>但在某些情况下其职责的需要，经常会出现的乐趣已经被否定，或避免乐趣和烦恼的一些事情还没有被接受。</p>
 			</div>
 		</div>

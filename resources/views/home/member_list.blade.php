@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Projects</title>
+<title>member</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -34,6 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header-nav -->
 	<div class="header-nav">
+		<div style="margin-left:103px;float: left">
+			<img src="{{asset('images/logo.png')}}" alt="" width="150px">
+		</div>		
 		<div class="container">
 			<nav class="navbar navbar-default">
 
@@ -52,9 +55,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">首页</a></li>
+						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
 						<li><a href="{{url('/homeabout/index')}}">关于</a></li>
-						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li class="active"><a href="#">会员</a></li>
 						<li><a href="{{url('homeserver/index')}}">服务</a></li>
 						<li><a href="{{url('homestory/index')}}">love story</a></li>
 						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>

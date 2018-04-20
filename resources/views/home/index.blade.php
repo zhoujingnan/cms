@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home</title>
+<title>index</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -44,10 +44,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <!-- header-nav -->
 	<div class="header-nav">
+		<div style="margin-left:103px;float: left">
+			<img src="{{asset('images/logo.png')}}" alt="" width="150px">
+		</div>
 		<div class="container">
 			<nav class="navbar navbar-default">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
+
 				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
