@@ -24,6 +24,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		$('.banner-bottom-grd a').Chocolat();
 	});
 </script>
+
 <!--script-->
 <!-- start-smoth-scrolling -->
 <script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
@@ -45,7 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header-nav -->
 	<div class="header-nav">
 		<div style="margin-left:103px;float: left">
-			<img src="{{asset('images/logo.png')}}" alt="" width="150px">
+			<img src="{{asset('images/logo.png')}}" id="logoo" alt="" width="150px">
 		</div>
 		<div class="container">
 			<nav class="navbar navbar-default">
