@@ -122,7 +122,63 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--typography-page -->
 	<div class="typo">
 		<div class="container">
-			1312312
+			<div class="col-md-3 contact-grid">
+				<div class="call">
+					<div class="col-xs-3 contact-grdl">
+						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-9 contact-grdr">
+						<ul>
+							<li>+3402 890 679</li>
+							<li>+5356 890 679</li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="address">
+					<div class="col-xs-3 contact-grdl">
+						<span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+					</div>
+					<div class="col-xs-9 contact-grdr">
+						<ul>
+							<li>{{$net_data[0]['email']}}</li>
+							<li>Charm</li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="mail">
+					<div class="col-xs-3 contact-grdl">
+						<!-- <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> -->
+					</div>
+					<div class="col-xs-9 contact-grdr">
+						<ul>
+							<li><a href="mailto:info@example.com">info@example.com</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="col-md-5 contact-grid">
+				<form action="{{url('homecontact/redis')}}" method="get">
+					<input type="text" value="Name" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
+					<input type="email" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<textarea name="text" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+					<input type="submit" value="Send">
+				</form>
+			</div>
+			<div class="col-md-4 contact-grid">
+				<div class="newsletter1">
+					<!-- <h3><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> -->
+					<img src="{{asset($net_data[0]['net_code'])}}" alt="">
+					</h3>
+				</div>
+				<form>
+					<input type="text" value="wechat" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<input type="submit" value="Subscribe">
+				</form>
+			</div>
 		</div>
 	</div>
 <!-- //typography-page -->
