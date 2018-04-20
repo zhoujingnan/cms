@@ -10,14 +10,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -45,18 +45,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<span class="icon-bar"></span>
 				  </button>
 					<div class="logo">
-						<a class="navbar-brand" href="index.html">Obdurate <span>我们在我们的服务专业</span></a>
+						<a class="navbar-brand" href="index.html">Charm <span>我们在我们的服务专业</span></a>
 					</div>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="index.html">首页</a></li>
-						<li><a href="about.html">关于</a></li>
-						<li><a href="services.html">服务</a></li>
-						<li><a href="projects.html">项目</a></li>
-						<li><a href="contact.html">联系我们</a></li>
+						<li class="active"><a href="{{url('/homeindex/index')}}">首页</a></li>
+						<li><a href="#">关于</a></li>
+						<li><a href="{{url('/homemember/index')}}">会员</a></li>
+						<li><a href="{{url('homeserver/index')}}">服务</a></li>
+						<li><a href="{{url('homestory/index')}}">love story</a></li>
+						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 
