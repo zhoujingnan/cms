@@ -161,11 +161,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-5 contact-grid">
 				<form action="{{url('homecontact/redis')}}" method="get">
-					<input type="text" value="Name" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+					<input type="text" value="Name" name="leave_name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
-					<input type="email" value="Email" name="email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
-					<textarea name="text" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
-					<input type="submit" value="Send">
+					<input type="email" value="Email" name="leave_email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+					<textarea name="leave_content" type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+					<input type="submit" value="Leave">
 				</form>
 			</div>
 			<div class="col-md-4 contact-grid">
