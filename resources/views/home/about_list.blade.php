@@ -7,9 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Obdurate Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-//地图
+<!-- //百度地图 -->
+<style type="text/css">
+	#allmap{width:100%;height:500px;}
+</style>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nIWaZizfhQ2gqsdAyVh6NcX1LuErcLBV"></script>
-	
+<!-- //百度地图 -->	
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
@@ -100,14 +103,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //banner -->
 
-	<div>
-		<p>企业地址：{{$con_data['net_address']}}</p>
-		<div id="l-map"></div>
-		
+	<div style="width:500px;float:left;">
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			企业地址：{{$con_data['net_address']}}
+		</p>
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			邮编：{{$con_data['net_post_code']}}
+		</p>
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			联系电话：{{$con_data['net_phone']}}
+		</p>
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			客服QQ：{{$con_data['service_qq']}}
+		</p>
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			邮箱：{{$con_data['email']}}
+		</p>
+		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
+			
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=768100410&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2::53" alt="在线咨询" title="在线咨询"/></a>
+		</p>
 	</div>
-
+	<div id="allmap" style="width:800px;float:left;"></div>
 <!-- team -->
-	<div class="team">
+	<div class="team" style="clear:both;">
 		
 	</div>
 <!-- //team -->
@@ -117,11 +136,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
 					<div class="footer-logo">
-						<a href="index.html">Obdurate <span>We are professional in our service</span></a>
+						<a href="index.html">Charm <span>We are professional in our service</span></a>
 					</div>
 				</div>
 				<div class="col-md-4 footer-grid">
-					<h4>Call Us <span>+0809 657 890</span></h4>
+					<h4>Call Us <span>{{$con_data['net_phone']}}</span></h4>
 					<p>My Company,875 jewel Road <span>8907 Ukrain.</span></p>
 					<ul class="social-icons">
 						<li><a href="#" class="p"> </a></li>
@@ -156,16 +175,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- here stars scrolling icon -->
 <script type="text/javascript">
 	// 百度地图API功能
-	var map = new BMap.Map("allmap");    // 创建Map实例
-	map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-	//添加地图类型控件
-	map.addControl(new BMap.MapTypeControl({
-		mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP
-        ]}));	  
-	map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+	var map = new BMap.Map("allmap");
+	var point = new BMap.Point({{$net_data['x_coord']}},{{$net_data['y_coord']}});
+	var marker = new BMap.Marker(point);  // 创建标注
+	map.addOverlay(marker);              // 将标注添加到地图中
+	map.centerAndZoom(point, 15);
+	var opts = {
+	  width : 200,     // 信息窗口宽度
+	  height: 100,     // 信息窗口高度
+	  title : "Charm" , // 信息窗口标题
+	  enableMessage:true,//设置允许信息窗发送短息
+	  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
+	}
+	var infoWindow = new BMap.InfoWindow("地址：{{$con_data['net_address']}}", opts);  // 创建信息窗口对象 
+	marker.addEventListener("click", function(){          
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	});
 </script>
 
 	<script type="text/javascript">
