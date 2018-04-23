@@ -65,7 +65,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <th align="center" valign="middle" class="borderright">会员名</th>
             <th align="center" valign="middle" class="borderright">头像</th>
             <th align="center" valign="middle" class="borderright">年龄</th>
-            <th align="center" valign="middle" class="borderright">工作</th>
+            <th align="center" valign="middle" class="borderright">身高</th>
             <th align="center" valign="middle" class="borderright">薪资</th>
             <th align="center" valign="middle" class="borderright">地址</th>
             <th align="center" valign="middle">操作</th>

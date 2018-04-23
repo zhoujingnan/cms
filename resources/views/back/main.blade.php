@@ -27,9 +27,9 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="main">
   <tr>
     <td colspan="2" align="left" valign="top">
-    <span class="time"><strong>上午好！admin</strong><u>[超级管理员]</u></span>
-    <div class="top"><span class="left">您上次的登灵时间：2012-05-03  12:00   登录IP：127.0.0.1 &nbsp;&nbsp;&nbsp;&nbsp;如非您本人操作，请及时</span><a href="index.html" target="mainFrame" onFocus="this.blur()">更改密码</a></div>
-    <div class="sec">这是您第<span class="num">80</span>次,登录！</div>
+    <span class="time"><strong>{{$admin_data['h']}}！{{$admin_data['admin_name']}}</strong></span>
+    <div class="top"><span class="left">您的登灵时间：{{date("Y-m-d H:i",$admin_data['last_login_time'])}}   登录IP：{{$admin_data['last_ip']}} &nbsp;&nbsp;&nbsp;&nbsp;</span><a href="{{url('backadmin/uppwd',['id'=>$admin_data['admin_id']])}}" target="mainFrame" onFocus="this.blur()">更改密码</a></div>
+    <div class="sec">这是您第<span class="num">{{$admin_data['login_num']}}</span>次,登录！</div>
     </td>
   </tr>
   <tr>
@@ -42,10 +42,21 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 		网站logo：<img src="{{asset($arr['logo'])}}" width="100" /><br/>
 		网站坐标：x:{{$arr['x_coord']}},y:{{$arr['y_coord']}}<br/>
 		网站描述：{{$arr['net_desc']}}<br/>
-		<button id="update">编辑</button>
+		<button id="net_update">编辑</button>
     </div>
     </td>
-    
+    <td align="left" valign="top" width="49%">
+    <div class="main-tit">联系我们</div>
+    <div class="main-con">
+		企业地址：{{$data['net_address']}}<br/>
+		备案号：{{$data['net_bei']}}<br/>
+		邮编：{{$data['net_post_code']}}<br />
+		企业二维码：<img src="{{asset($data['net_code'])}}" width="100" /><br/>
+		联系电话：{{$data['net_phone']}}<br/>
+		客服QQ：{{$data['service_qq']}}<br/>
+		<button id="con_update">编辑</button>
+    </div>
+    </td>
   </tr>
   <tr>
     <td colspan="2" align="left" valign="top">
@@ -57,8 +68,11 @@ div.main-order{ line-height:30px; padding:10px 0 0 0;}
 </table>
 <script>
 	$(function(){
-		$(document).on('click','#update',function(){
+		$(document).on('click','#net_update',function(){
 			location.href="<?php echo url('backnet/netadd');?>";
+		})
+		$(document).on('click','#con_update',function(){
+			location.href="<?php echo url('backnet/conadd');?>";
 		})
 	})
 </script>

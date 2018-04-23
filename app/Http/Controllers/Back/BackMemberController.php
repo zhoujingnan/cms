@@ -1,8 +1,8 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\MemberModel;
-class BackMemberController extends Controller{
+class BackMemberController extends BackCommonController{
 	//首页展示
 	public function index(){
 		$obj=new MemberModel();

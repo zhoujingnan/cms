@@ -22,29 +22,29 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
 <body onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
 <div id="left-top">
 	<div><img src="{{asset('images/main/member.gif')}}" width="44" height="44" /></div>
-    <span>用户：admin<br>角色：超级管理员</span>
+    <span>用户：{{$arr['admin_name']}}<br>角色：{{$arr['role_name']}}</span>
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">
       
       <div>
         <span>管理员管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
+        <a href="{{url('backadmin/index')}}" target="mainFrame" onFocus="this.blur()">用户管理</a>
+        <a href="{{url('backrole/index')}}" target="mainFrame" onFocus="this.blur()">角色管理</a>
+        <a href="{{url('backpower/index')}}" target="mainFrame" onFocus="this.blur()">权限管理</a>
+        <!-- <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a> -->
       </div>
       <div>
         <span>栏目管理</span>
-        <a href="{{asset('backcolumn')}}" target="mainFrame" onFocus="this.blur()">栏目列表</a>
-        <a href="{{asset('backmember/index')}}" target="mainFrame" onFocus="this.blur()">会员管理</a>
+       <!--  <a href="{{url('backcolumn')}}" target="mainFrame" onFocus="this.blur()">栏目列表</a> -->
+        <a href="{{url('backmember/index')}}" target="mainFrame" onFocus="this.blur()">会员管理</a>
         <a href="{{url('backclass/index')}}" target="mainFrame" onFocus="this.blur()">课堂管理</a>
         <a href="{{url('backstory/index')}}" target="mainFrame" onFocus="this.blur()">故事管理</a>
         <a href="{{url('backactive/index')}}" target="mainFrame" onFocus="this.blur()">活动管理</a>
       </div>
       <div>
         <span>广告管理</span>
-        <a href="{{asset('backadvertising/add')}}" target="mainFrame" onFocus="this.blur()">添加广告</a>
-        <a href="{{asset('backadvertising/ad_list')}}" target="mainFrame" onFocus="this.blur()">广告列表</a>
+        <a href="{{url('backadvertising/add')}}" target="mainFrame" onFocus="this.blur()">添加广告</a>
+        <a href="{{url('backadvertising/ad_list')}}" target="mainFrame" onFocus="this.blur()">广告列表</a>
       </div>
       <div>
         <span>留言管理</span>
@@ -52,11 +52,10 @@ body{overflow-x:hidden; background:url({{asset('images/main/leftbg.jpg')}}) left
       </div>
       <div>
         <span>友情链接</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">分组权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">级别权限</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">角色管理</a>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">自定义权限</a>
-      </div>     
+        <a href="{{url('backlink/add')}}" target="mainFrame" onFocus="this.blur()">添加链接</a>
+        <a href="{{url('backlink/show')}}" target="mainFrame" onFocus="this.blur()">链接列表</a>
+      </div>
+	   
     </div>
 </body>
 </html>
