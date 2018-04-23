@@ -16,14 +16,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //for-mobile-apps -->
-<link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="http://127.0.0.1/dayi/cms/public/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="http://127.0.0.1/dayi/cms/public/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="{{asset('js/jquery-1.11.1.min.js')}}"></script>
+<script src="http://127.0.0.1/dayi/cms/public/js/jquery-1.11.1.min.js"></script>
 <!-- //js -->
 <!-- start-smoth-scrolling -->
-<script type="text/javascript" src="{{asset('js/move-top.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/easing.js')}}"></script>
+<script type="text/javascript" src="http://127.0.0.1/dayi/cms/public/js/move-top.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/dayi/cms/public/js/easing.js"></script>
 <script type="text/javascript">
 	jQuery(document).ready(function($) {
 		$(".scroll").click(function(event){
@@ -41,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- header-nav -->
 	<div class="header-nav">
 		<div style="margin-left:103px;float: left">
-			<img src="{{asset('images/logo.png')}}" alt="" width="150px">
+			<img src="http://127.0.0.1/dayi/cms/public/images/logo.png" alt="" width="150px">
 		</div>		
 		<div class="container">
 			<nav class="navbar navbar-default">
@@ -61,12 +61,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homeindex/index">首页</a></li>
 						<li class="active"><a href="#">关于</a></li>
-						<li><a href="{{url('/homemember/index')}}">会员</a></li>
-						<li><a href="{{url('homeserver/index')}}">服务</a></li>
-						<li><a href="{{url('homestory/index')}}">love story</a></li>
-						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homemember/index">会员</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homeserver/index">服务</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homestory/index">love story</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homecontact/index">联系我们</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 
@@ -105,19 +105,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div style="width:500px;float:left;">
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
-			企业地址：{{$con_data['net_address']}}
+			企业地址：哪里呢
 		</p>
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
-			邮编：{{$con_data['net_post_code']}}
+			邮编：453500
 		</p>
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
-			联系电话：{{$con_data['net_phone']}}
+			联系电话：113891972
 		</p>
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
-			客服QQ：{{$con_data['service_qq']}}
+			客服QQ：768100410
 		</p>
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
-			邮箱：{{$con_data['email']}}
+			邮箱：768100410@qq.com
 		</p>
 		<p style="font-size:18px;margin-top:10px;margin-left:30%;">
 			
@@ -133,23 +133,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- footer -->
 	<div class="footer" style="position:relative;">
 	<div class="advertising" style="position:absolute;left:0;top:10%;width:150px;height:300px;">
-		@foreach($left_ad_data as $k => $v)
-		@if($v['ad_type']==1)
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}">{{$v['ad_content']}}</a></p>
-		@else
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}"><img src="{{asset($v['ad_content'])}}" width="150" height="50" /></a></p>
-		@endif
-		@endforeach
-	</div>
+							<p style="width:150px;height:50px" title="dada"><a href="wwww"><img src="http://127.0.0.1/dayi/cms/public/images/1524464429-3092.jpg" width="150" height="50" /></a></p>
+					</div>
 	<div class="advertising" style="position:absolute;right:0;top:10%;width:150px;height:300px;">
-	@foreach($right_ad_data as $k => $v)
-		@if($v['ad_type']==1)
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}">{{$v['ad_content']}}</a></p>
-		@else
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}"><img src="{{asset($v['ad_content'])}}" width="150" height="50" /></a></p>
-		@endif
-		@endforeach
-	</div>
+						<p style="width:150px;height:50px" title="fghfdts"><a href="dadada"><img src="http://127.0.0.1/dayi/cms/public/images/1524464448-3168.jpg" width="150" height="50" /></a></p>
+					</div>
 		<div class="container">
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
@@ -158,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 				</div>
 				<div class="col-md-4 footer-grid">
-					<h4>Call Us <span>{{$con_data['net_phone']}}</span></h4>
+					<h4>Call Us <span>113891972</span></h4>
 					<p>My Company,875 jewel Road <span>8907 Ukrain.</span></p>
 					<ul class="social-icons">
 						<li><a href="#" class="p"> </a></li>
@@ -169,12 +157,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-4 footer-grid">
 					<ul>
-						<li><a href="{{url('/homeindex/index')}}">首页</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homeindex/index">首页</a></li>
 						<li class="active"><a href="#">关于</a></li>
-						<li><a href="{{url('/homemember/index')}}">会员</a></li>
-						<li><a href="{{url('homeserver/index')}}">服务</a></li>
-						<li><a href="{{url('homestory/index')}}">love story</a></li>
-						<li><a href="{{url('homecontact/index')}}">联系我们</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homemember/index">会员</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homeserver/index">服务</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homestory/index">love story</a></li>
+						<li><a href="http://127.0.0.1/dayi/cms/public/homecontact/index">联系我们</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -184,16 +172,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer-copy">
 		<div class="container">
 			<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			<p>友情链接：@foreach($link_data as $k => $v)
-					@if($v['link_type']==1)
-					<a href="{{$v['net_url']}}">{{$v['net_logo']}}</a>
-					@else
-					<a href="{{$v['net_url']}}">
-					<img src="{{asset($v['net_logo'])}}" width="100" height="50" />
+			<p>友情链接：										<a href="www.baidu.com">
+					<img src="http://127.0.0.1/dayi/cms/public/images/1524464353-6693.jpg" width="100" height="50" />
 					</a>
-					@endif
-					@endforeach
-			</p>
+																				<a href="www.taobao.com">
+					<img src="http://127.0.0.1/dayi/cms/public/images/1524464389-5706.jpg" width="100" height="50" />
+					</a>
+													</p>
 		</div>
 	</div>
 <!-- //footer -->
@@ -204,7 +189,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript">
 	// 百度地图API功能
 	var map = new BMap.Map("allmap");
-	var point = new BMap.Point({{$net_data['x_coord']}},{{$net_data['y_coord']}});
+	var point = new BMap.Point(116.417854,39.921988);
 	var marker = new BMap.Marker(point);  // 创建标注
 	map.addOverlay(marker);              // 将标注添加到地图中
 	map.centerAndZoom(point, 15);
@@ -215,7 +200,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  enableMessage:true,//设置允许信息窗发送短息
 	  message:"亲耐滴，晚上一起吃个饭吧？戳下面的链接看下地址喔~"
 	}
-	var infoWindow = new BMap.InfoWindow("地址：{{$con_data['net_address']}}", opts);  // 创建信息窗口对象 
+	var infoWindow = new BMap.InfoWindow("地址：哪里呢", opts);  // 创建信息窗口对象 
 	marker.addEventListener("click", function(){          
 		map.openInfoWindow(infoWindow,point); //开启信息窗口
 	});

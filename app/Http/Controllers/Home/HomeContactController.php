@@ -7,21 +7,27 @@ class HomeContactController extends Controller{
 		$obj=new CommonModel();
 		//企业简介	
 		$net_data=json_decode(json_encode($obj->get('contact',"1=1")),true);	
+		//左广告
+		$time = time();
+		$left_ad_data=json_decode(json_encode($obj->get('advertising',"ad_id%2=1 && start_time<$time && end_time>$time")),true);
+		//右广告
+		$right_ad_data=json_decode(json_encode($obj->get('advertising',"ad_id%2=0 && start_time<$time && end_time>$time")),true);
+		//友情链接
+		$link_data=json_decode(json_encode($obj->get('link',"1=1")),true);
 // print_r($net_data);die;
-<<<<<<< HEAD
 		$dir=__DIR__."/static/contact_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
 		}
 		else{
 			ob_start();
-			$content=view("home.contact_list",['net_data'=>$net_data])->__toString();
+			$content=view("home.contact_list",['net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data])->__toString();
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
-=======
-		return view("home.contact_list",['net_data'=>$net_data]);
->>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
+
+		return view("home.contact_list",['net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
+
 	}
 	public function redis(){
 		$arr=$_GET;
