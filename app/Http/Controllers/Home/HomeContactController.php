@@ -26,8 +26,6 @@ class HomeContactController extends Controller{
 			echo $content;die;
 		}		
 
-		return view("home.contact_list",['net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
-
 	}
 	public function redis(){
 		$arr=$_GET;

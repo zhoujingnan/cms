@@ -27,8 +27,6 @@ class HomeServerController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}	
-		
-		return view("home.server_list",['a_data'=>$a_data,'c_data'=>$c_data,'net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
 	}
 	public function show($id){
 		$obj=new CommonModel();

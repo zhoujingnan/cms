@@ -25,7 +25,7 @@ class HomeAboutController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}
-		return view("home.about_list",array('con_data'=>$con_data,'net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data));
+		
 	}
 }
 

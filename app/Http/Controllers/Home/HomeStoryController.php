@@ -35,8 +35,6 @@ class HomeStoryController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}	
-		
-		return view("home.story_list",['net_data'=>$net_data,'story_data'=>$story_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
 	}
 }
 

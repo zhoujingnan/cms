@@ -41,8 +41,6 @@ class HomeIndexController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}
-		
-		return view("home.index",['server_data'=>$server_data,'net_data'=>$net_data,'story_data'=>$story_data,'active_data'=>$active_data,'admin_data'=>$admin_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
 	}
 }
 
