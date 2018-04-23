@@ -1,8 +1,9 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\LeaveModel;
-class BackLeaveController extends Controller{
+use  Mail;
+class BackLeaveController extends BackCommonController{
 	//查看首页
 	public function index(){
 		$obj=new LeaveModel();
@@ -54,10 +55,26 @@ class BackLeaveController extends Controller{
 		}
 		$arr['status']=$status;
 		$obj=new LeaveModel();
+		$mail=new Mailer();
+		print_r($obj);die;
 		$res=$obj->upd('leave',$arr,"`leave_id`=$leave_id");
 		if($res){
 			echo 1;die;
 		}
+	}
+	//发送邮件
+	public function sendmail($leave_id){
+		$obj=new LeaveModel();
+		$arr=json_decode(json_encode($obj->get('leave',"`leave_id`=$leave_id")),true);
+		return view('back.leave_mail',['arr'=>$arr]);
+
+	}
+	//邮件
+	public function sendmaildo(){
+		$arr=$_POST;
+		// print_r($arr);
+		Mail::to("768100410@qq.com");
+		print_r($mail);die;
 	}
 	//删除
 	public function del($leave_id){

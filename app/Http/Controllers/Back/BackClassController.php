@@ -3,9 +3,9 @@
  * 课堂类
  */
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\ClassModel;
-class BackClassController extends Controller{
+class BackClassController extends BackCommonController{
 	//课堂首页
 	public function index(){
 		$obj=new ClassModel();

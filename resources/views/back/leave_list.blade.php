@@ -63,9 +63,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             </th>
             <th align="center" valign="middle" class="borderright">编号</th>
             <th align="center" valign="middle" class="borderright">IP</th>
+            <th align="center" valign="middle" class="borderright">名字</th>
+            <th align="center" valign="middle" class="borderright">邮箱</th>
             <th align="center" valign="middle" class="borderright">内容</th>
             <th align="center" valign="middle" class="borderright">时间</th>
-            <th align="center" valign="middle" class="borderright">状态</th>
+            <!-- <th align="center" valign="middle" class="borderright">状态</th> -->
             <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($arr as $key =>$val)
@@ -75,16 +77,19 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             </td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_id']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_ip']}}</td>
+             <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_name']}}</td>
+              <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_email']}}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_content']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{$val['leave_time']}}</td>
-            <td align="center" valign="middle" class="borderright borderbottom" title="{{$val['leave_id']}}">	
+            <td align="center" valign="middle" class="borderright borderbottom">{{date("Y-m-d H:i:s",$val['leave_time'])}}</td>
+            <!-- <td align="center" valign="middle" class="borderright borderbottom" title="{{$val['leave_id']}}">	
             @if($val['status']==1)
-            	<span class="ss" title="{{$val['status']}}">显示</span>
+            	<span class="ss" title="{{$val['status']}}">已回复</span>
             @else
-            	<span class="ss" title="{{$val['status']}}">不显示</span>
+            	<span class="ss" title="{{$val['status']}}">未回复</span>
             @endif
-            </td>
+            </td> -->
             <td align="center" valign="middle" class="borderbottom">
+              <a href="{{url('backleave/sendmail',['leave_id'=>$val['leave_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">回复</a>
               <a href="{{url('backleave/del',['leave_id'=>$val['leave_id']])}}" target="mainFrame" onFocus="this.blur()" class="add">删除</a>
             </td>
           </tr>
@@ -191,12 +196,12 @@ $(function(){
     		success:function(msg){
     			console.log(msg)
   				if(msg==1){
-  					if(span=="显示"){
-  						_this.html("不显示");
+  					if(span=="未回复"){
+  						_this.html("已回复");
   					}
-  					else{
-  						_this.html("显示");
-  					}
+  					// else{
+  					// 	_this.html("显示");
+  					// }
   				}
     		}
     	})

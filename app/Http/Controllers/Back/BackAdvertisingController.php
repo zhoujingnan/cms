@@ -3,9 +3,10 @@
 广告管理
 */
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use DB;
-class BackAdvertisingController extends Controller{
+use App\Back\AdvertisingModel;
+class BackAdvertisingController extends BackCommonController{
 	//添加广告
 	public function add(){
 		return view("back.advertisingadd");
@@ -38,10 +39,35 @@ class BackAdvertisingController extends Controller{
 	}
 	//广告展示
 	public function ad_list(){
-		$data = DB::select('select * from `advertising`');
+		$count = DB::table('advertising')->count();//总条数
+		$page = 1;//当前页数
+		$total = ceil($count/5);//总页数
+		$data = DB::select('select * from `advertising` limit 0,5');
 		$data = json_decode(json_encode($data), true);
 		//var_dump($data);
-		return view("back.advertisingad_list",array('arr'=>$data));
+		return view("back.advertisingad_list",array('arr'=>$data,'page'=>$page,'count'=>$count,'totalpage'=>$total));
+	}
+	public function pagedata(){
+		$key=$_GET['key'];
+		if(empty($key)){
+			$where="1=1";
+		}else{
+			$where="`ad_name` like '%$key%'";
+		}
+		$obj=new AdvertisingModel();
+		//总条数
+		$count=$obj->count("advertising","1=1");
+		//每页显示的条数
+		$limit=5;
+		//总页数
+		$totalpage=ceil($count/$limit);
+		//当前页
+		$page=$_GET['page'];
+		//偏移量
+		$offet=($page-1)*$limit;
+		//数据
+		$arr=json_decode(json_encode($obj->select('advertising',$where,$offet,$limit)),true);
+		return view('back.ad_list_ajax',['arr'=>$arr,'totalpage'=>$totalpage,'count'=>$count,'page'=>$page]);
 	}
 	//广告修改
 	public function ad_up($id){
@@ -77,6 +103,14 @@ class BackAdvertisingController extends Controller{
 		$res = DB::update("update `advertising` set ad_name='$ad_name',ad_type='$ad_type',ad_link='$ad_link',ad_desc='$ad_desc',ad_content='$ad_content',start_time='$start_time',end_time='$end_time' where ad_id=$ad_id");
 		if($res){
 			return redirect('backadvertising/ad_list');
+		}
+	}
+	//删除
+	public function del(){
+		$id = $_GET['id'];
+		$res = DB::delete("delete from `advertising` where ad_id in ($id)");
+		if($res){
+			return 1;
 		}
 	}
 }

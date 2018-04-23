@@ -1,8 +1,8 @@
 <?php 
 namespace App\Http\Controllers\Back;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Back\BackCommonController;
 use App\Back\ActiveModel;
-class BackActiveController extends Controller{
+class BackActiveController extends BackCommonController{
 	//活动首页
 	public function index(){
 		$obj=new ActiveModel();
