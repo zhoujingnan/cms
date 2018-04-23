@@ -17,7 +17,6 @@ Route::get('/', function () {
 Route::controller('/backlogin','Back\BackLoginController');
 //首页
 Route::controller('/backindex','Back\BackIndexController');
-
 //栏目
 Route::controller('/backcolumn','Back\BackColumnController');
 
