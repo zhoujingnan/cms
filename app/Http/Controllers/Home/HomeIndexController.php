@@ -19,19 +19,12 @@ class HomeIndexController extends Controller{
 		$active_data=json_decode(json_encode($obj->get('active',"1=1")),true);
 		//管理员
 		$admin_data=json_decode(json_encode($obj->get('admin',"1=1")),true);
-		//左广告
-		$time = time();
-		$left_ad_data=json_decode(json_encode($obj->get('advertising',"ad_id%2=1 && start_time<$time && end_time>$time")),true);
-		//右广告
-		$right_ad_data=json_decode(json_encode($obj->get('advertising',"ad_id%2=0 && start_time<$time && end_time>$time")),true);
-		//友情链接
-		$link_data=json_decode(json_encode($obj->get('link',"1=1")),true);
 		// print_r($server_data);
 		// print_r($net_data);
 		// print_r($story_data);
 		// print_r($active_data);
 		// print_r($admin_data);
-		return view("home.index",['server_data'=>$server_data,'net_data'=>$net_data,'story_data'=>$story_data,'active_data'=>$active_data,'admin_data'=>$admin_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data]);
+		return view("home.index",['server_data'=>$server_data,'net_data'=>$net_data,'story_data'=>$story_data,'active_data'=>$active_data,'admin_data'=>$admin_data]);
 	}
 }
 

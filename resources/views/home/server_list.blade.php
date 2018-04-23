@@ -144,25 +144,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //typography-page -->
 <!-- footer -->
-	<div class="footer" style="position:relative;">
-	<div class="advertising" style="position:absolute;left:0;top:10%;width:150px;height:300px;">
-		@foreach($left_ad_data as $k => $v)
-		@if($v['ad_type']==1)
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}">{{$v['ad_content']}}</a></p>
-		@else
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}"><img src="{{asset($v['ad_content'])}}" width="150" height="50" /></a></p>
-		@endif
-		@endforeach
-	</div>
-	<div class="advertising" style="position:absolute;right:0;top:10%;width:150px;height:300px;">
-	@foreach($right_ad_data as $k => $v)
-		@if($v['ad_type']==1)
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}">{{$v['ad_content']}}</a></p>
-		@else
-			<p style="width:150px;height:50px" title="{{$v['ad_desc']}}"><a href="{{$v['ad_link']}}"><img src="{{asset($v['ad_content'])}}" width="150" height="50" /></a></p>
-		@endif
-		@endforeach
-	</div>
+	<div class="footer">
 		<div class="container">
 			<div class="footer-grids">
 				<div class="col-md-4 footer-grid">
@@ -197,16 +179,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="footer-copy">
 		<div class="container">
 			<p>Copyright &copy; 2016.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			<p>友情链接：@foreach($link_data as $v => $v)
-					@if($v['link_type']==1)
-					<a href="{{$v['net_url']}}">{{$v['net_logo']}}</a>
-					@else
-					<a href="{{$v['net_url']}}">
-					<img src="{{asset($v['net_logo'])}}" width="100" height="50" />
-					</a>
-					@endif
-					@endforeach
-			</p>
 		</div>
 	</div>
 <!-- //footer -->
