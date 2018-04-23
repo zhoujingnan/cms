@@ -26,8 +26,17 @@ class HomeAboutController extends Controller{
 			echo $content;die;
 		}
 		
+			if(file_exists($dir)){
+				echo file_get_contents($dir);die;
+			}
+			else{
+				ob_start();
+				$content=view("home.about_list",array('con_data'=>$con_data,'net_data'=>$net_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data))->__toString();
+				file_put_contents($dir,$content);
+				echo $content;die;
+			}		
 	}
+
+
 }
-
-
  ?>

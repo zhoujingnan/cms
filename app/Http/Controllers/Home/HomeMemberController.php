@@ -26,7 +26,7 @@ class HomeMemberController extends Controller{
 			$content=view("home.member_list",['net_data'=>$net_data,'member_data'=>$member_data,'left_ad_data'=>$left_ad_data,'right_ad_data'=>$right_ad_data,'link_data'=>$link_data])->__toString();
 			file_put_contents($dir,$content);
 			echo $content;die;
-		}	
+		}				
 
 	}
 }

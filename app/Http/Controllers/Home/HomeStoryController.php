@@ -35,7 +35,8 @@ class HomeStoryController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}	
-	}
+				
+	} 
 }
 
 
