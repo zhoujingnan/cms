@@ -10,7 +10,6 @@ class HomeServerController extends Controller{
 		$a_data=json_decode(json_encode($obj->get('active',"1=1")),true);		
 		$c_data=json_decode(json_encode($obj->get('class',"1=1")),true);	
 		//var_dump($a_data);var_dump($c_data);die;		
-<<<<<<< HEAD
 		$dir=__DIR__."/static/server_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -21,9 +20,7 @@ class HomeServerController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
-=======
 		return view("home.server_list",['a_data'=>$a_data,'c_data'=>$c_data,'net_data'=>$net_data]);
->>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 	public function show($id){
 		$obj=new CommonModel();

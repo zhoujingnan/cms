@@ -18,7 +18,6 @@ class HomeStoryController extends Controller{
 				}
 			}
 		}
-<<<<<<< HEAD
 		$dir=__DIR__."/static/story_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -29,9 +28,7 @@ class HomeStoryController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
-=======
 		return view("home.story_list",['net_data'=>$net_data,'story_data'=>$story_data]);
->>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 }
 
