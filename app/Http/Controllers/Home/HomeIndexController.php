@@ -24,6 +24,7 @@ class HomeIndexController extends Controller{
 		// print_r($story_data);
 		// print_r($active_data);
 		// print_r($admin_data);
+<<<<<<< HEAD
 		$dir=__DIR__."/static/index_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -34,6 +35,9 @@ class HomeIndexController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}
+=======
+		return view("home.index",['server_data'=>$server_data,'net_data'=>$net_data,'story_data'=>$story_data,'active_data'=>$active_data,'admin_data'=>$admin_data]);
+>>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 }
 

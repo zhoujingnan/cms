@@ -8,6 +8,7 @@ class HomeContactController extends Controller{
 		//企业简介	
 		$net_data=json_decode(json_encode($obj->get('contact',"1=1")),true);	
 // print_r($net_data);die;
+<<<<<<< HEAD
 		$dir=__DIR__."/static/contact_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -18,6 +19,9 @@ class HomeContactController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
+=======
+		return view("home.contact_list",['net_data'=>$net_data]);
+>>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 	public function redis(){
 		$arr=$_GET;

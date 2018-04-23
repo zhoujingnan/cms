@@ -8,6 +8,7 @@ class HomeAboutController extends Controller{
 		//企业简介	
 		$con_data=json_decode(json_encode($obj->get('contact',"1=1")),true)[0];
 		$net_data=json_decode(json_encode($obj->get('net',"1=1")),true)[0];
+<<<<<<< HEAD
 		$dir=__DIR__."/static/about_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -18,6 +19,9 @@ class HomeAboutController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
+=======
+		return view("home.about_list",array('con_data'=>$con_data,'net_data'=>$net_data));
+>>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 }
 

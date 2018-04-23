@@ -9,6 +9,7 @@ class HomeMemberController extends Controller{
 		$net_data=json_decode(json_encode($obj->get('contact',"1=1")),true);
 		//查询会员
 		$member_data=json_decode(json_encode($obj->get('member',"1=1")),true);
+<<<<<<< HEAD
 		$dir=__DIR__."/static/member_static.html";
 		if(file_exists($dir)){
 			echo file_get_contents($dir);die;
@@ -19,6 +20,9 @@ class HomeMemberController extends Controller{
 			file_put_contents($dir,$content);
 			echo $content;die;
 		}		
+=======
+		return view("home.member_list",['net_data'=>$net_data,'member_data'=>$member_data]);
+>>>>>>> bfac739ab1b1c6c28038cd4393e5de3e8cb42794
 	}
 }
 
